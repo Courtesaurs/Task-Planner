@@ -60,17 +60,6 @@
 	}
 }
 
-//  @extend 
-.flex {
-	display: -webkit-flex;
-	display: flex;
-}
-
-.text-ellipsis {	
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
 
 // =============================================================================
 // Font Face
@@ -103,16 +92,12 @@
 	}
 }
 
-@include font-face(Montserrat-Regular, fonts/Montserrat-Regular, null, null, ttf);
-@include font-face(acaslonpro-bolditalic, fonts/acaslonpro-bolditalic, null, null, ttf);
-@include font-face(KabelITC-Book, fonts/KabelITC-Book, null, null, ttf);
- 
-$textFont: "Montserrat-Regular";
-$titleFont: "acaslonpro-bolditalic";
-$footerText: "KabelITC-Book";
+@include font-face(IndieFlower, fonts/IndieFlower, null, null, ttf);
+
+$textFont: "IndieFlower"; 
 $tablet-width: 768px;
 $desktop-width: 916px;
-$modile-width: 480px;
+$mobile-width: 480px;
 
 @mixin tablet {
   @media (max-width: #{$tablet-width}) {
@@ -121,7 +106,7 @@ $modile-width: 480px;
 }
 
 @mixin mobile {
-	@media (max-width: #{$modile-width}) {
+	@media (max-width: #{$mobile-width}) {
 	    @content;
 	}	
 }
@@ -130,4 +115,47 @@ $modile-width: 480px;
   @media (max-width: #{$desktop-width}) {
     @content;
   }
+}
+
+
+//  @extend 
+.flex {
+	display: -webkit-flex;
+	display: flex;
+}
+
+.text-ellipsis {	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+ 
+.button {
+	background: #549695; 
+	padding: 11px 20px 8px;
+	float: right;
+	margin: 12px 0 25px;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	text-transform: uppercase;
+	color: white;
+	border: none;
+	font: 700 16px $textFont;
+	&:after {
+		content: '';
+		position: absolute;
+		width: 150%;
+		height: 150%;
+		left: 120%;
+		top: -30%;
+		background: rgba(255, 255, 255, 0.4);
+		-webkit-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		-webkit-transition: 0.5s left;
+		transition: 0.5s left;
+	}
+	&:hover:after {
+		left: -150%;
+	}
 }
