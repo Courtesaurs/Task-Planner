@@ -1,9 +1,108 @@
 @import "mixins.scss";
 
 
-.wrapper {
+.wrapper { 
 	background: white;
 	font-family: $textFont, sans-serif;
+	#header, #footer {
+		width: 100%;
+		background: $green;
+	}
+	#header {
+		.confines-width {
+			@extend .confines-width;
+			padding: 10px 0;
+			@extend .flex;
+			@include alignBoth(space-between, center);
+			.logo {
+				width: 150px;
+				img {
+					max-width: 100%;
+				}
+			}
+			#navigation {
+				ul {
+					@extend .flex;
+					padding-left: 0;
+					list-style: none;
+					a {
+						text-decoration: none;
+						color: white;
+						font-size: 20px;
+						font-weight: bold;
+						padding: 10px 15px 7px;
+						cursor: pointer;
+						@include linkAnimation(white);
+						border-bottom: 1px solid transparent;
+					}
+				}
+			}
+		}
+	}
+	.confines-width {
+		@extend .confines-width;  
+		margin: 15px auto; 
+		@extend .flex;
+		@include justCont(space-between);
+		.content-page {
+			width: 100%; 
+			.tasks {
+				width: 100%;
+				.title {
+					margin: 15px 0;
+					display: inline-block;
+				}
+				.button-add {
+					@extend .button;
+					margin: 10px 0 0 0; 
+				}
+				.list {
+					.row {
+						border-bottom: 1px solid $green;
+						padding: 15px 10px;
+						font: 18px $lightTextFont;
+						@extend .flex;
+						.name {
+							width: 25%;
+						}
+						.executor {
+							width: 25%;
+						}
+						.status {
+							width: 20%; 
+						}
+						.dates {
+							width: 30%;
+							text-align: center;
+						}  
+						select {
+							cursor: pointer;
+							border: none; 
+							outline: none;
+							max-width: 100%;
+							font: 18px $lightTextFont;
+							option {
+								cursor: pointer; 
+							}
+						}
+						&.head-row {  
+							font: 20px $textFont;
+							background: $green;
+							color: white;
+							.executor, .status {
+								padding-left: 5px;
+							}
+						}
+					}
+
+				}
+			}
+		} 
+	}
+	#footer {
+		position: absolute;
+		bottom: 0;
+	}
 	.page-auth {
 		width: 100%;
 		min-height: 100vh;
@@ -33,7 +132,7 @@
 				input.tab-selector {
 					display: none;
 					&:checked+label {
-						background: rgba(255, 255, 255, 0.7);
+						background: rgba(255, 255, 255, 0.6);
 						color: #549695;
 					}
 				}
@@ -46,6 +145,10 @@
 					background: #549695;
 					color: white;
 					font: bold 20px $textFont;
+					@include trans();
+					&:hover {
+						background: #48807F;
+					}
 					&.tab-label-2 {
 						margin-left: -5px;
 						@include mobile {
@@ -68,19 +171,19 @@
 				    transition: all ease-out 0.33s 0.23s;
 				}
 				.content { 
-					background: rgba(255, 255, 255, 0.7);
+					background: rgba(255, 255, 255, 0.6);
 					min-height: 255px;
 					padding: 20px 5%;
-					position: relative;
-					margin-top: -1px;
+					position: relative; 
 					form {
 						position: absolute;
 						top: 50%;
-						-webkit-transform: translateY(-50%);
 						left: 5%;
 						z-index: -1;
 						width: 90%;
-						opacity: 0;
+						opacity: 0;						
+						-webkit-transform: translateY(-50%);
+						transform: translateY(-50%);
 					    transition: all ease-out 0.2s 0.1s;		
 					    .input {
 							position: relative;
@@ -116,13 +219,13 @@
 							display: inline-block;
 							float: right;
 							padding: 0 1em; 
-							color: #696969;
-							font-weight: bold;
+							color: #696969; 
+							font-family: $lightTextFont;
 							font-size: 70.25%;
 							-webkit-font-smoothing: antialiased; 
 							user-select: none;
 							position: absolute;
-							top: 0.95em;
+							top: 0.3em;
 							font-size: 16px;
 							left: 0;
 							display: block;

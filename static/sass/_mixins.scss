@@ -1,6 +1,5 @@
- $blue: #12408E;
- $dark-grey: #636466;
- $silver-text: #939598;
+ $green: #549695;
+ $dark-grey: #636466; 
  
 /* ------------- MIXINS --------------*/
 
@@ -9,6 +8,13 @@
    left: auto;
    right: auto;
   }
+}
+
+.confines-width {
+	width: 90%;
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
 }
  
 @mixin justCont($value) {
@@ -92,9 +98,12 @@
 	}
 }
 
-@include font-face(IndieFlower, fonts/IndieFlower, null, null, ttf);
+@include font-face(Roboto-Regular, fonts/Roboto-Regular, null, null, ttf);
+@include font-face(Roboto-Light, fonts/Roboto-Light, null, null, ttf);
 
-$textFont: "IndieFlower"; 
+
+$textFont: "Roboto-Regular"; 
+$lightTextFont: "Roboto-Light";
 $tablet-width: 768px;
 $desktop-width: 916px;
 $mobile-width: 480px;
@@ -145,17 +154,17 @@ $mobile-width: 480px;
 	&:after {
 		content: '';
 		position: absolute;
-		width: 150%;
-		height: 150%;
-		left: 120%;
-		top: -30%;
+		width: 200%;
+		height: 200%;
+		left: 170%;
+		top: -53%;
 		background: rgba(255, 255, 255, 0.4);
 		-webkit-transform: rotate(-45deg);
 		transform: rotate(-45deg);
-		-webkit-transition: 0.5s left;
-		transition: 0.5s left;
+		-webkit-transition: 0.8s left;
+		transition: 0.8s left;
 	}
 	&:hover:after {
-		left: -150%;
+		left: -300%;
 	}
 }
