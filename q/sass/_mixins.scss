@@ -1,0 +1,133 @@
+ $blue: #12408E;
+ $dark-grey: #636466;
+ $silver-text: #939598;
+ 
+/* ------------- MIXINS --------------*/
+
+@mixin push--auto {
+  margin: {
+   left: auto;
+   right: auto;
+  }
+}
+ 
+@mixin justCont($value) {
+	-webkit-justify-content: $value;
+	justify-content: $value;
+}
+
+@mixin alignItems($value) {
+	-webkit-align-items: $value;
+	align-items: $value;
+}
+
+@mixin alignBoth($value1, $value2) {
+	-webkit-justify-content: $value1;
+	justify-content: $value1;
+	-webkit-align-items: $value2;
+	align-items: $value2;
+}
+
+@mixin flexWrap($value) {
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+@mixin flexDir($value) {
+	-webkit-flex-direction: $value;
+	flex-direction: $value;
+} 
+
+@mixin trans($time: 0.3s, $objects: all) {
+	-webkit-transition: $time $objects;
+	transition: $time $objects;
+} 
+
+@mixin bg {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+} 
+
+@mixin linkAnimation($color) {
+	padding-bottom: 15px;
+	border-bottom: 1px solid transparent;
+	-webkit-transition: 0.3s all;
+	transition: 0.3s all;
+	&:hover {
+		padding-bottom: 4px;
+		border-color: $color;
+	}
+}
+
+//  @extend 
+.flex {
+	display: -webkit-flex;
+	display: flex;
+}
+
+.text-ellipsis {	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+@include font-face(Montserrat-Regular, fonts/Montserrat-Regular, null, null, ttf);
+@include font-face(acaslonpro-bolditalic, fonts/acaslonpro-bolditalic, null, null, ttf);
+@include font-face(KabelITC-Book, fonts/KabelITC-Book, null, null, ttf);
+ 
+$textFont: "Montserrat-Regular";
+$titleFont: "acaslonpro-bolditalic";
+$footerText: "KabelITC-Book";
+$tablet-width: 768px;
+$desktop-width: 916px;
+$modile-width: 480px;
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+	@media (max-width: #{$modile-width}) {
+	    @content;
+	}	
+}
+
+@mixin desktop {
+  @media (max-width: #{$desktop-width}) {
+    @content;
+  }
+}
