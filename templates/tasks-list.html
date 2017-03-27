@@ -16,6 +16,29 @@
                 <div class="status">Status</div>
                 <div class="dates">Dates</div>
             </div>
+            {% for task in tasks %}
+                <div class="row">
+                    <div class="name">{{ task.title }}</div>
+                    <div class="executor">
+                        <select name="select-executor">
+                            <option value="">Choose Executor</option>
+                            <option value="Poplavskiy">Poplavskiy</option>
+                            <option value="Vanya Dorn">Vanya Dorn</option>
+                        </select>
+                    </div>
+                    <div class="status">
+                        {{ task.status }}
+                        <select name="select-status">
+                            <option value="Select Status"></option>
+                            <option value="Not started">Not started</option>
+                            <option value="in the process">in the process</option>
+                            <option value="ready">ready</option>
+                            <option value="something wrong">something wrong</option>
+                        </select>
+                    </div>
+                    <div class="dates"><span class="from">12/12/12</span> - <span class="to">05/02/13</span></div>
+                </div>
+            {% endfor %}
             <div class="row">
                 <div class="name">test</div>
                 <div class="executor">
