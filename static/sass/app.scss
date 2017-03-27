@@ -1,0 +1,22 @@
+@import "mixins.scss";
+@import "auth.scss"; 
+@import "header.scss"; 
+
+
+.wrapper { 
+	background: white;
+	font-family: $textFont, sans-serif; 
+	.confines-width {
+		@extend .confines-width;  
+		margin: 15px auto; 
+		@extend .flex;
+		@include justCont(space-between);
+		.content-page {
+			width: 100%; 
+			@import "todo-list.scss"; 
+			@import "profile.scss"; 			 
+		} 
+	} 
+}
+
+ 
