@@ -1,0 +1,170 @@
+ $green: #549695;
+ $dark-grey: #636466; 
+ 
+/* ------------- MIXINS --------------*/
+
+@mixin push--auto {
+  margin: {
+   left: auto;
+   right: auto;
+  }
+}
+
+.confines-width {
+	width: 90%;
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+ 
+@mixin justCont($value) {
+	-webkit-justify-content: $value;
+	justify-content: $value;
+}
+
+@mixin alignItems($value) {
+	-webkit-align-items: $value;
+	align-items: $value;
+}
+
+@mixin alignBoth($value1, $value2) {
+	-webkit-justify-content: $value1;
+	justify-content: $value1;
+	-webkit-align-items: $value2;
+	align-items: $value2;
+}
+
+@mixin flexWrap($value) {
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+@mixin flexDir($value) {
+	-webkit-flex-direction: $value;
+	flex-direction: $value;
+} 
+
+@mixin trans($time: 0.3s, $objects: all) {
+	-webkit-transition: $time $objects;
+	transition: $time $objects;
+} 
+
+@mixin bg {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+} 
+
+@mixin linkAnimation($color) {
+	padding-bottom: 15px;
+	border-bottom: 1px solid transparent;
+	-webkit-transition: 0.3s all;
+	transition: 0.3s all;
+	&:hover {
+		padding-bottom: 4px;
+		border-color: $color;
+	}
+}
+
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+@include font-face(Roboto-Regular, fonts/Roboto-Regular, null, null, ttf);
+@include font-face(Roboto-Light, fonts/Roboto-Light, null, null, ttf);
+
+
+$textFont: "Roboto-Regular"; 
+$lightTextFont: "Roboto-Light";
+$tablet-width: 768px;
+$desktop-width: 916px;
+$mobile-width: 480px;
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+	@media (max-width: #{$mobile-width}) {
+	    @content;
+	}	
+}
+
+@mixin desktop {
+  @media (max-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+
+//  @extend 
+.flex {
+	display: -webkit-flex;
+	display: flex;
+}
+
+.text-ellipsis {	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+ 
+.button {
+	background: #549695; 
+	padding: 11px 20px 8px;
+	float: right;
+	margin: 12px 0 25px;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	text-transform: uppercase;
+	color: white;
+	border: none;
+	font: 700 16px $textFont;
+	&:after {
+		content: '';
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		left: 170%;
+		top: -53%;
+		background: rgba(255, 255, 255, 0.4);
+		-webkit-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		-webkit-transition: 0.8s left;
+		transition: 0.8s left;
+	}
+	&:hover:after {
+		left: -300%;
+	}
+}

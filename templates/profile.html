@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+
+{% block title %}Task-Manager: profile{% endblock %}
+
+{% block content %}
+
+				<section class="profile-info">
+					<div class="left-part">
+						<div class="container-img"><img src="../static/images/avatar.jpg" alt="avatar"></div>
+					</div>
+					<div class="right-part">
+						<div class="name">Leonid Agutin</div>
+						<div class="username">@agushka</div>
+						<div class="row"><span class="property">Email: </span><span class="value">agushka@gmail.com</span></div>
+						<div class="row"><span class="property">Роль: </span>
+							<span class="value"> 
+								<select name="select-role">
+									<option value="">Choose role</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>
+						 	</span>
+						 </div>
+						<div class="row"><span class="property">Должность: </span><span class="value"> test post </span></div>
+					</div>					
+				</section>
+{% endblock %}			

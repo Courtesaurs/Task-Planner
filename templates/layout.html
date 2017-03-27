@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Task-Manager{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/app.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header id="header">
+            <div class="confines-width">
+                <div class="logo"><img src="" alt="logo"></div>
+                <nav id="navigation">
+                    <ul>
+                        <li><a href="">Link1</a></li>
+                        <li><a href="">Link2</a></li>
+                        <li><a href="">Link3</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="confines-width">
+            <main class="content-page">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+
+        <footer id="footer"></footer>
+    </div>  
+    <script src="../static/js/lib/jquery-3.2.0.min.js"></script>
+    <script src="../static/js/ui.js"></script>
+</body>
+</html>

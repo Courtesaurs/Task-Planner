@@ -1,0 +1,100 @@
+<!DOCTYPE html> 
+<head>
+	<meta charset="UTF-8">
+	<title>Todo-list</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/normalize.css">
+	<link rel="stylesheet" href="../static/css/app.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header id="header">
+			<div class="confines-width">
+				<div class="left-part">
+					<div class="logo"><img src="" alt="logo"></div>
+				</div>
+				<div class="right-part">					
+					<nav id="navigation">
+						<ul>
+							<li><a href="#">Team</a></li>
+							<li><a href="#">All tasks</a></li>
+							<li><a href="#">My tasks</a></li>
+						</ul>
+					</nav>
+					<ul class="personal-links">
+						<li class="list-item"><a href="#">Profile</a></li>
+						<li class="list-item"><a href="#">Logout</a></li>
+					</ul>
+				</div>
+				<div id="burger">
+					  <span></span>
+					  <span></span>
+					  <span></span>
+					  <span></span>
+					  <span></span>
+					  <span></span>
+				</div>
+			</div>
+		</header>
+		<div class="confines-width">
+			<main class="content-page">
+				<section class="tasks">
+					<h1 class="title">Tasks</h1>
+					<div class="button-add">Add</div>					
+					<div class="list">
+						<div class="row head-row">
+							<div class="name">Title</div>
+							<div class="executor">Executor</div>
+							<div class="status">Status</div>
+							<div class="dates">Dates</div>
+						</div>
+						<div class="row">
+							<div class="name">test</div>
+							<div class="executor">
+								<select name="select-executor">
+									<option value="">Choose Executor</option>
+									<option value="Poplavskiy">Poplavskiy</option>
+									<option value="Vanya Dorn">Vanya Dorn</option>								
+								</select>
+							</div>
+							<div class="status">
+								<select name="select-status">
+									<option value="Select Status">Choose Status</option>
+									<option value="Not started">Not started</option>
+									<option value="in the process">in the process</option>
+									<option value="ready">ready</option>
+									<option value="something wrong">something wrong</option>
+								</select>
+							</div>
+							<div class="dates"><span class="from">12/12/12</span> - <span class="to">05/02/13</span></div>
+						</div>
+						<div class="row">
+							<div class="name">Title</div>
+							<div class="executor">
+								<select name="select-executor">
+									<option value="">Choose Executor</option>
+									<option value="Poplavskiy">Poplavskiy</option>
+									<option value="Vanya Dorn">Vanya Dorn</option>								
+								</select>
+							</div>
+							<div class="status">
+								<select name="select-status">
+									<option value="Select Status">Choose Status</option>
+									<option value="Not started">Not started</option>
+									<option value="in the process">in the process</option>
+									<option value="ready">ready</option>
+									<option value="something wrong">something wrong</option>
+								</select>
+							</div>
+							<div class="dates">Dates</div>
+						</div>
+					</div>
+				</section>
+			</main> 
+		</div>
+		<footer id="footer"></footer>
+	</div>  
+	<script src="../static/js/lib/jquery-3.2.0.min.js"></script>
+	<script src="../static/js/ui.js"></script>
+</body>
+</html>
