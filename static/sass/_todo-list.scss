@@ -1,0 +1,59 @@
+.tasks {
+	width: 100%;
+	.title {
+		margin: 15px 0;
+		display: inline-block;
+	}
+	.button-add {
+		@extend .button;
+		margin: 10px 0 0 0; 
+	}
+	.list {
+		.row {
+			border-bottom: 1px solid $green;
+			padding: 15px 10px;
+			font: 18px $lightTextFont;
+			@extend .flex;
+			.name {
+				width: 25%;
+			}
+			.executor {
+				width: 25%;
+			}
+			.status {
+				width: 20%; 
+			}
+			.dates {
+				width: 30%;
+				text-align: center;
+			}  
+			select {
+				cursor: pointer;
+				border: none; 
+				outline: none;
+				max-width: 100%;
+				font: 18px $lightTextFont;
+				option {
+					cursor: pointer; 
+				}
+			}
+			&.head-row {  
+				font: 20px $textFont;
+				background: $green;
+				color: white;
+				.executor, .status {
+					padding-left: 5px;
+				}
+			}
+			@include tablet() {
+				&, select {
+					font-size: 14px;
+				}
+				&.head-row {
+					font-size: 15px;
+				}
+			}
+		}
+
+	}
+}
