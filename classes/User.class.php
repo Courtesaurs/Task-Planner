@@ -1,21 +1,25 @@
 <?php
 
-use App\BaseModel;
-use App\Role;
+//use App\BaseModel;
+//use App\Role;
 
 namespace App;
 
-class User extend App\BaseModel
+
+class User // extends App\BaseModel
 {
     private $id;
     private $name;
     private $role;
     private $username;
+    private $password;
 
-    // TODO: Override BaseModel method to grab the role object into this
-    public function get($id)
+    public function __construct($name, $role_id, $username, $password)
     {
-
+        $this->name = $name;
+        $this->role = Role::get($role_id);
+        $this->username = $username;
+        $this->password = md5($password);
     }
 
     public function getRole()
@@ -23,7 +27,27 @@ class User extend App\BaseModel
 
     }
 
-    public static function getUsers()
+    public function save()
+    {
+
+    }
+
+    public function getTasks()
+    {
+
+    }
+
+    public function assignToRole($role_id)
+    {
+
+    }
+
+    public static function get($id)
+    {
+
+    }
+
+    public static function getObjects($args)
     {
 
     }
