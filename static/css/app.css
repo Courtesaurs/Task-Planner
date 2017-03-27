@@ -16,7 +16,7 @@
   src: url("fonts/Roboto-Light.ttf") format("truetype");
 }
 /* line 131, ../sass/_mixins.scss */
-.flex, .page-auth, #header .confines-width, #header .confines-width .right-part, #header .confines-width .right-part #navigation ul, #header .confines-width .right-part .personal-links, .wrapper .confines-width, .wrapper #header .confines-width .content-page .tasks .list .row, #header .wrapper .confines-width .content-page .tasks .list .row, .wrapper .confines-width .content-page .tasks .list .row, .wrapper #header .confines-width .content-page .profile-info, #header .wrapper .confines-width .content-page .profile-info, .wrapper .confines-width .content-page .profile-info {
+.flex, #header .confines-width, #header .confines-width .right-part, #header .confines-width .right-part #navigation ul, #header .confines-width .right-part .personal-links, .page-auth, .wrapper .confines-width, .wrapper #header .confines-width .content-page .tasks .list .row, #header .wrapper .confines-width .content-page .tasks .list .row, .wrapper .confines-width .content-page .tasks .list .row, .wrapper #header .confines-width .content-page .profile-info, #header .wrapper .confines-width .content-page .profile-info, .wrapper .confines-width .content-page .profile-info, .wrapper #add-task-button, .wrapper .popup-add-task {
   display: -webkit-flex;
   display: flex;
 }
@@ -29,7 +29,7 @@
 }
 
 /* line 142, ../sass/_mixins.scss */
-.button, .page-auth .container .tabs .content form .button-send, .wrapper #header .confines-width .content-page .tasks .button-add, #header .wrapper .confines-width .content-page .tasks .button-add, .wrapper .confines-width .content-page .tasks .button-add {
+.button, .row-input .button-send, .wrapper #header .confines-width .content-page .tasks .button-add, #header .wrapper .confines-width .content-page .tasks .button-add, .wrapper .confines-width .content-page .tasks .button-add, .wrapper #add-task-button {
   background: #549695;
   padding: 11px 20px 8px;
   float: right;
@@ -43,7 +43,7 @@
   font: 700 16px "Roboto-Regular";
 }
 /* line 154, ../sass/_mixins.scss */
-.button:after, .page-auth .container .tabs .content form .button-send:after, .wrapper #header .confines-width .content-page .tasks .button-add:after, #header .wrapper .confines-width .content-page .tasks .button-add:after, .wrapper .confines-width .content-page .tasks .button-add:after {
+.button:after, .row-input .button-send:after, .wrapper #header .confines-width .content-page .tasks .button-add:after, #header .wrapper .confines-width .content-page .tasks .button-add:after, .wrapper .confines-width .content-page .tasks .button-add:after, .wrapper #add-task-button:after {
   content: '';
   position: absolute;
   width: 200%;
@@ -57,209 +57,8 @@
   transition: 0.8s left;
 }
 /* line 167, ../sass/_mixins.scss */
-.button:hover:after, .page-auth .container .tabs .content form .button-send:hover:after, .wrapper #header .confines-width .content-page .tasks .button-add:hover:after, #header .wrapper .confines-width .content-page .tasks .button-add:hover:after, .wrapper .confines-width .content-page .tasks .button-add:hover:after {
+.button:hover:after, .row-input .button-send:hover:after, .wrapper #header .confines-width .content-page .tasks .button-add:hover:after, #header .wrapper .confines-width .content-page .tasks .button-add:hover:after, .wrapper .confines-width .content-page .tasks .button-add:hover:after, .wrapper #add-task-button:hover:after {
   left: -300%;
-}
-
-/* line 1, ../sass/_auth.scss */
-.page-auth {
-  width: 100%;
-  min-height: 100vh;
-  background-image: url(../images/bg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  align-items: center;
-  position: relative;
-}
-/* line 9, ../sass/_auth.scss */
-.page-auth:after {
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-/* line 18, ../sass/_auth.scss */
-.page-auth .container {
-  position: relative;
-  z-index: 1;
-  width: 95%;
-  max-width: 500px;
-  top: -50px;
-}
-/* line 24, ../sass/_auth.scss */
-.page-auth .container .tabs {
-  position: relative;
-  width: 100%;
-}
-/* line 27, ../sass/_auth.scss */
-.page-auth .container .tabs input.tab-selector {
-  display: none;
-}
-/* line 29, ../sass/_auth.scss */
-.page-auth .container .tabs input.tab-selector:checked + label {
-  background: rgba(255, 255, 255, 0.6);
-  color: #549695;
-}
-/* line 34, ../sass/_auth.scss */
-.page-auth .container .tabs label.tab-label {
-  cursor: pointer;
-  width: 130px;
-  padding: 13px 5px;
-  display: inline-block;
-  text-align: center;
-  background: #549695;
-  color: white;
-  font: bold 20px "Roboto-Regular";
-  -webkit-transition: 0.3s all;
-  transition: 0.3s all;
-}
-/* line 44, ../sass/_auth.scss */
-.page-auth .container .tabs label.tab-label:hover {
-  background: #48807F;
-}
-/* line 47, ../sass/_auth.scss */
-.page-auth .container .tabs label.tab-label.tab-label-2 {
-  margin-left: -5px;
-}
-@media (max-width: 480px) {
-  /* line 50, ../sass/_auth.scss */
-  .page-auth .container .tabs label.tab-label.tab-label-2 {
-    float: right;
-    margin-left: 0;
-  }
-}
-@media (max-width: 480px) {
-  /* line 57, ../sass/_auth.scss */
-  .page-auth .container .tabs label.tab-label {
-    width: 50%;
-  }
-}
-/* line 62, ../sass/_auth.scss */
-.page-auth .container .tabs input.tab-selector-1:checked ~ .content .sign-in-form,
-.page-auth .container .tabs input.tab-selector-2:checked ~ .content .sign-up-form {
-  z-index: 100;
-  opacity: 1;
-  transition: all ease-out 0.33s 0.23s;
-}
-/* line 68, ../sass/_auth.scss */
-.page-auth .container .tabs .content {
-  background: rgba(255, 255, 255, 0.6);
-  min-height: 255px;
-  padding: 20px 5%;
-  position: relative;
-}
-/* line 73, ../sass/_auth.scss */
-.page-auth .container .tabs .content form {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  z-index: -1;
-  width: 90%;
-  opacity: 0;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  transition: all ease-out 0.2s 0.1s;
-}
-/* line 83, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .input {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  margin: 7px 0;
-  width: 100%;
-  vertical-align: top;
-  overflow: hidden;
-  padding-top: 1em;
-}
-/* line 94, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .input__field {
-  position: relative;
-  display: block;
-  float: right;
-  border: none;
-  border-radius: 0;
-  font: 400 15px "Roboto-Regular";
-  -webkit-appearance: none;
-  /* for box shadows to show on iOS */
-  padding: 0.5em 0em 0.4em;
-  width: 100%;
-  background: transparent;
-  color: #9da8b2;
-  font-size: 1.25em;
-}
-/* line 109, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .input__field:focus {
-  outline: none;
-}
-/* line 113, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .input__label {
-  display: inline-block;
-  float: right;
-  padding: 0 1em;
-  color: #696969;
-  font-family: "Roboto-Light";
-  font-size: 70.25%;
-  -webkit-font-smoothing: antialiased;
-  user-select: none;
-  position: absolute;
-  top: 0.3em;
-  font-size: 16px;
-  left: 0;
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 0em;
-  pointer-events: none;
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-  -webkit-transition: -webkit-transform 0.2s 0.15s, color 1s;
-  transition: transform 0.2s 0.15s, color 1s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-/* line 139, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .input__label-content {
-  position: relative;
-  display: block;
-  padding: 1.6em 0;
-  width: 100%;
-}
-/* line 146, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .graphic {
-  position: absolute;
-  top: 0;
-  left: 0;
-  fill: none;
-  stroke: #92989e;
-  pointer-events: none;
-  -webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
-  transition: transform 0.7s, stroke 0.7s;
-  -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
-  transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
-}
-/* line 159, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .icon {
-  color: #ddd;
-  font-size: 150%;
-}
-/* line 164, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .input--filled .input__label {
-  color: #333;
-  -webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
-  transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
-}
-/* line 170, ../sass/_auth.scss */
-.page-auth .container .tabs .content form .input--filled .graphic {
-  stroke: #333;
-  -webkit-transform: translate3d(-66.6%, 0, 0);
-  transform: translate3d(-66.6%, 0, 0);
 }
 
 /* line 1, ../sass/_header.scss */
@@ -493,6 +292,221 @@ body.open-menu .wrapper #header .confines-width .right-part {
   transform: translateX(0);
 }
 
+/* line 1, ../sass/_auth.scss */
+.page-auth {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../images/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  position: relative;
+}
+/* line 9, ../sass/_auth.scss */
+.page-auth:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+/* line 18, ../sass/_auth.scss */
+.page-auth .container {
+  position: relative;
+  z-index: 1;
+  width: 95%;
+  max-width: 500px;
+  top: -50px;
+}
+/* line 24, ../sass/_auth.scss */
+.page-auth .container .tabs {
+  position: relative;
+  width: 100%;
+}
+/* line 27, ../sass/_auth.scss */
+.page-auth .container .tabs input.tab-selector {
+  display: none;
+}
+/* line 29, ../sass/_auth.scss */
+.page-auth .container .tabs input.tab-selector:checked + label {
+  background: rgba(255, 255, 255, 0.6);
+  color: #549695;
+}
+/* line 34, ../sass/_auth.scss */
+.page-auth .container .tabs label.tab-label {
+  cursor: pointer;
+  width: 130px;
+  padding: 13px 5px;
+  display: inline-block;
+  text-align: center;
+  background: #549695;
+  color: white;
+  font: bold 20px "Roboto-Regular";
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+/* line 44, ../sass/_auth.scss */
+.page-auth .container .tabs label.tab-label:hover {
+  background: #48807F;
+}
+/* line 47, ../sass/_auth.scss */
+.page-auth .container .tabs label.tab-label.tab-label-2 {
+  margin-left: -5px;
+}
+@media (max-width: 480px) {
+  /* line 50, ../sass/_auth.scss */
+  .page-auth .container .tabs label.tab-label.tab-label-2 {
+    float: right;
+    margin-left: 0;
+  }
+}
+@media (max-width: 480px) {
+  /* line 57, ../sass/_auth.scss */
+  .page-auth .container .tabs label.tab-label {
+    width: 50%;
+  }
+}
+/* line 62, ../sass/_auth.scss */
+.page-auth .container .tabs input.tab-selector-1:checked ~ .content .sign-in-form,
+.page-auth .container .tabs input.tab-selector-2:checked ~ .content .sign-up-form {
+  z-index: 100;
+  opacity: 1;
+  transition: all ease-out 0.33s 0.23s;
+}
+/* line 68, ../sass/_auth.scss */
+.page-auth .container .tabs .content {
+  background: rgba(255, 255, 255, 0.6);
+  min-height: 255px;
+  padding: 20px 5%;
+  position: relative;
+}
+/* line 73, ../sass/_auth.scss */
+.page-auth .container .tabs .content form {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  z-index: -1;
+  width: 90%;
+  opacity: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  transition: all ease-out 0.2s 0.1s;
+}
+
+/* line 90, ../sass/_auth.scss */
+.row-input .input {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 7px 0;
+  width: 100%;
+  vertical-align: top;
+  overflow: hidden;
+  padding-top: 1em;
+}
+/* line 99, ../sass/_auth.scss */
+.row-input .input.date {
+  max-width: 250px;
+}
+/* line 104, ../sass/_auth.scss */
+.row-input .input__field {
+  position: relative;
+  display: block;
+  float: right;
+  border: none;
+  border-radius: 0;
+  font: 14px "Roboto-Light";
+  -webkit-appearance: none;
+  /* for box shadows to show on iOS */
+  padding: 0.5em 0em 0.6em;
+  width: 100%;
+  background: transparent;
+  color: #9da8b2;
+}
+/* line 118, ../sass/_auth.scss */
+.row-input textarea.input__field {
+  height: 120px;
+  overflow: auto;
+  resize: none;
+}
+/* line 125, ../sass/_auth.scss */
+.row-input .input__field:focus {
+  outline: none;
+}
+/* line 129, ../sass/_auth.scss */
+.row-input .input__label {
+  display: inline-block;
+  float: right;
+  padding: 0 1em;
+  color: #696969;
+  font-family: "Roboto-Light";
+  font-size: 70.25%;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  left: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0em;
+  pointer-events: none;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transition: -webkit-transform 0.2s 0.15s, color 1s;
+  transition: transform 0.2s 0.15s, color 1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+/* line 155, ../sass/_auth.scss */
+.row-input .input__label-content {
+  position: relative;
+  display: block;
+  padding: 1.6em 0;
+  width: 100%;
+}
+/* line 162, ../sass/_auth.scss */
+.row-input textarea ~ .graphic {
+  stroke-width: 0.5px;
+}
+/* line 165, ../sass/_auth.scss */
+.row-input .graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: none;
+  stroke: #92989e;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
+  transition: transform 0.7s, stroke 0.7s;
+  -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+  transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+}
+/* line 178, ../sass/_auth.scss */
+.row-input .icon {
+  color: #ddd;
+  font-size: 150%;
+}
+/* line 183, ../sass/_auth.scss */
+.row-input .input--filled .input__label {
+  color: #333;
+  -webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+  transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+}
+/* line 189, ../sass/_auth.scss */
+.row-input .input--filled .graphic {
+  stroke: #333;
+  -webkit-transform: translate3d(-66.6%, 0, 0);
+  transform: translate3d(-66.6%, 0, 0);
+}
+
 /* line 6, ../sass/app.scss */
 .wrapper {
   background: white;
@@ -638,4 +652,120 @@ body.open-menu .wrapper #header .confines-width .right-part {
 /* line 45, ../sass/_profile.scss */
 .wrapper #header .confines-width .content-page .profile-info .right-part .row .value select option, #header .wrapper .confines-width .content-page .profile-info .right-part .row .value select option, .wrapper .confines-width .content-page .profile-info .right-part .row .value select option {
   cursor: pointer;
+}
+@media (max-width: 480px) {
+  /* line 55, ../sass/_profile.scss */
+  .wrapper #header .confines-width .content-page .profile-info, #header .wrapper .confines-width .content-page .profile-info, .wrapper .confines-width .content-page .profile-info {
+    width: 100%;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+  }
+  /* line 59, ../sass/_profile.scss */
+  .wrapper #header .confines-width .content-page .profile-info .right-part, #header .wrapper .confines-width .content-page .profile-info .right-part, .wrapper .confines-width .content-page .profile-info .right-part {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  /* line 63, ../sass/_profile.scss */
+  .wrapper #header .confines-width .content-page .profile-info .left-part, #header .wrapper .confines-width .content-page .profile-info .left-part, .wrapper .confines-width .content-page .profile-info .left-part {
+    width: 100%;
+  }
+  /* line 65, ../sass/_profile.scss */
+  .wrapper #header .confines-width .content-page .profile-info .left-part .container-img, #header .wrapper .confines-width .content-page .profile-info .left-part .container-img, .wrapper .confines-width .content-page .profile-info .left-part .container-img {
+    margin: 0 auto;
+  }
+}
+/* line 20, ../sass/app.scss */
+.wrapper #add-task-button {
+  width: 55px;
+  height: 55px;
+  text-transform: uppercase;
+  background: orange;
+  border-radius: 50%;
+  bottom: 30px;
+  right: 50px;
+  z-index: 20;
+  position: fixed;
+  cursor: pointer;
+  color: white;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 35, ../sass/app.scss */
+.wrapper #add-task-button:after {
+  width: 200px;
+  height: 200px;
+  left: 100px;
+  top: -40px;
+  border-radius: 50%;
+}
+/* line 42, ../sass/app.scss */
+.wrapper #add-task-button:hover:after {
+  left: -250px;
+}
+/* line 46, ../sass/app.scss */
+.wrapper .popup-add-task {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  /*background: url(../images/bg-popup.jpg);*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 0;
+  -webkit-transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+  -webkit-transform: translate(100%, 100%);
+  transform: translate(100%, 100%);
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 61, ../sass/app.scss */
+.wrapper .popup-add-task.open {
+  -webkit-transform: translate(0%, 0%);
+  transform: translate(0%, 0%);
+}
+/* line 65, ../sass/app.scss */
+.wrapper .popup-add-task:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+}
+/* line 72, ../sass/app.scss */
+.wrapper .popup-add-task #close-popup {
+  width: 35px;
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  height: 35px;
+  z-index: 2;
+  cursor: pointer;
+  background-image: url(../images/close.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* line 83, ../sass/app.scss */
+.wrapper .popup-add-task .container {
+  position: relative;
+  z-index: 1;
+  padding: 30px 40px 10px;
+  background: whitesmoke;
+  width: 95%;
+  max-width: 500px;
+}
+/* line 90, ../sass/app.scss */
+.wrapper .popup-add-task .container h2 {
+  margin: 10px 0 0;
 }

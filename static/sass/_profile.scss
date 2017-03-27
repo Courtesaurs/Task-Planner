@@ -50,3 +50,21 @@
 		}
 	} 
 }
+
+@include mobile() {
+	.profile-info {
+		width: 100%;
+		@include flexDir(column);
+		@include alignBoth(flex-start, flex-start);
+		.right-part {
+			margin-left: 0;
+			margin-top: 20px;
+		}
+		.left-part {
+			width: 100%;
+			.container-img {
+				margin: 0 auto;
+			}
+		}
+	}
+}

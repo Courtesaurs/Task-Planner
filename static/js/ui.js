@@ -20,6 +20,23 @@ jQuery(document).ready(function($){
 		$('body').toggleClass('open-menu');
 	});
 
+/*------------------------------------ */
+/*------------Popup task-------------- */
+
+	$('#add-task-button').click(function(){
+		$('.popup-add-task').addClass('open');
+	});
+	$('#close-popup').click(function(){
+		$('.popup-add-task').removeClass('open');
+	});
+
+/*------------------------------------ */
+	
+	$('#time-task').datepicker({
+		range: true,
+		multipleDatesSeparator: ' - ',
+		position: 'top left'
+	}); 
 
 });
 

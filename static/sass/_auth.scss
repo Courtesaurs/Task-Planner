@@ -79,104 +79,119 @@
 					opacity: 0;						
 					-webkit-transform: translateY(-50%);
 					transform: translateY(-50%);
-				    transition: all ease-out 0.2s 0.1s;		
-				    .input {
-						position: relative;
-						z-index: 1;
-						display: inline-block;
-						margin: 7px 0; 
-						width: 100%;
-						vertical-align: top;
-						overflow: hidden;
-						padding-top: 1em;
-					}
-
-					.input__field {
-						position: relative;
-						display: block;
-						float: right;  
-						border: none;
-						border-radius: 0;   
-						font: 400 15px $textFont;
-						-webkit-appearance: none; /* for box shadows to show on iOS */
-						padding: 0.5em 0em 0.4em;
-						width: 100%;
-						background: transparent;
-						color: #9da8b2;
-						font-size: 1.25em;
-					}
-
-					.input__field:focus {
-						outline: none;
-					}
-
-					.input__label {
-						display: inline-block;
-						float: right;
-						padding: 0 1em; 
-						color: #696969; 
-						font-family: $lightTextFont;
-						font-size: 70.25%;
-						-webkit-font-smoothing: antialiased; 
-						user-select: none;
-						position: absolute;
-						top: 0.3em;
-						font-size: 16px;
-						left: 0;
-						display: block;
-						width: 100%;
-						text-align: left;
-						padding: 0em;
-						pointer-events: none;
-						-webkit-transform-origin: 0 0;
-						transform-origin: 0 0;
-						-webkit-transition: -webkit-transform 0.2s 0.15s, color 1s;
-						transition: transform 0.2s 0.15s, color 1s;
-						-webkit-transition-timing-function: ease-out;
-						transition-timing-function: ease-out;
-					}
-
-					.input__label-content {
-						position: relative;
-						display: block;
-						padding: 1.6em 0;
-						width: 100%;
-					}
-
-					.graphic {
-						position: absolute;
-						top: 0;
-						left: 0;
-						fill: none;
-						stroke: #92989e;
-						pointer-events: none;
-						-webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
-						transition: transform 0.7s, stroke 0.7s;
-						-webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
-						transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
-					}
-
-					.icon {
-						color: #ddd;
-						font-size: 150%;
-					}  
-
-					.input--filled .input__label {
-						color: #333;
-						-webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
-						transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
-					}
-
-					.input--filled .graphic {
-						stroke: #333;
-						-webkit-transform: translate3d(-66.6%, 0, 0);
-						transform: translate3d(-66.6%, 0, 0);
-					}
-					.button-send {
-						@extend .button;
-					}
+				    transition: all ease-out 0.2s 0.1s;					    
 				}
 			} 	 
 		} 
+	}
+}
+
+.row-input {
+	.input {
+		position: relative;
+		z-index: 1;
+		display: inline-block;
+		margin: 7px 0; 
+		width: 100%;
+		vertical-align: top;
+		overflow: hidden;
+		padding-top: 1em;
+		&.date {
+			max-width: 250px;
+		}
+	}
+
+	.input__field {
+		position: relative;
+		display: block;
+		float: right;  
+		border: none;
+		border-radius: 0;    
+		font: 14px $lightTextFont;
+		-webkit-appearance: none; /* for box shadows to show on iOS */
+		padding: 0.5em 0em 0.6em;
+		width: 100%;
+		background: transparent;
+		color: #9da8b2; 
+	}
+
+	textarea.input__field {
+		height: 120px;
+		overflow: auto;
+		resize: none; 
+	}
+
+
+	.input__field:focus {
+		outline: none;
+	}
+
+	.input__label {
+		display: inline-block;
+		float: right;
+		padding: 0 1em; 
+		color: #696969; 
+		font-family: $lightTextFont;
+		font-size: 70.25%;
+		-webkit-font-smoothing: antialiased; 
+		user-select: none;
+		position: absolute;
+		top: 0;
+		font-size: 16px;
+		left: 0;
+		display: block;
+		width: 100%;
+		text-align: left;
+		padding: 0em;
+		pointer-events: none;
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+		-webkit-transition: -webkit-transform 0.2s 0.15s, color 1s;
+		transition: transform 0.2s 0.15s, color 1s;
+		-webkit-transition-timing-function: ease-out;
+		transition-timing-function: ease-out;
+	}
+
+	.input__label-content {
+		position: relative;
+		display: block;
+		padding: 1.6em 0;
+		width: 100%;
+	}
+
+	textarea~.graphic {
+		stroke-width: 0.5px;
+	}
+	.graphic {
+		position: absolute;
+		top: 0;
+		left: 0;
+		fill: none;
+		stroke: #92989e;
+		pointer-events: none;
+		-webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
+		transition: transform 0.7s, stroke 0.7s;
+		-webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+		transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+	}
+
+	.icon {
+		color: #ddd;
+		font-size: 150%;
+	}  
+
+	.input--filled .input__label {
+		color: #333;
+		-webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+		transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+	}
+
+	.input--filled .graphic {
+		stroke: #333;
+		-webkit-transform: translate3d(-66.6%, 0, 0);
+		transform: translate3d(-66.6%, 0, 0);
+	}
+	.button-send {
+		@extend .button;
 	}
 }
