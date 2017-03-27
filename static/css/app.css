@@ -16,7 +16,7 @@
   src: url("fonts/Roboto-Light.ttf") format("truetype");
 }
 /* line 131, ../sass/_mixins.scss */
-.flex, .wrapper #header .confines-width, .wrapper #header .confines-width #navigation ul, .wrapper .confines-width, .wrapper #header .confines-width .content-page .tasks .list .row, .wrapper .confines-width .content-page .tasks .list .row, .wrapper .page-auth {
+.flex, .page-auth, .wrapper #header .confines-width, .wrapper #header .confines-width .right-part, .wrapper #header .confines-width .right-part #navigation ul, .wrapper #header .confines-width .right-part .personal-links, .wrapper .confines-width, .wrapper #header .confines-width .content-page .tasks .list .row, .wrapper .confines-width .content-page .tasks .list .row {
   display: -webkit-flex;
   display: flex;
 }
@@ -29,7 +29,7 @@
 }
 
 /* line 142, ../sass/_mixins.scss */
-.button, .wrapper #header .confines-width .content-page .tasks .button-add, .wrapper .confines-width .content-page .tasks .button-add, .wrapper .page-auth .container .tabs .content form .button-send {
+.button, .page-auth .container .tabs .content form .button-send, .wrapper #header .confines-width .content-page .tasks .button-add, .wrapper .confines-width .content-page .tasks .button-add {
   background: #549695;
   padding: 11px 20px 8px;
   float: right;
@@ -43,7 +43,7 @@
   font: 700 16px "Roboto-Regular";
 }
 /* line 154, ../sass/_mixins.scss */
-.button:after, .wrapper #header .confines-width .content-page .tasks .button-add:after, .wrapper .confines-width .content-page .tasks .button-add:after, .wrapper .page-auth .container .tabs .content form .button-send:after {
+.button:after, .page-auth .container .tabs .content form .button-send:after, .wrapper #header .confines-width .content-page .tasks .button-add:after, .wrapper .confines-width .content-page .tasks .button-add:after {
   content: '';
   position: absolute;
   width: 200%;
@@ -57,135 +57,12 @@
   transition: 0.8s left;
 }
 /* line 167, ../sass/_mixins.scss */
-.button:hover:after, .wrapper #header .confines-width .content-page .tasks .button-add:hover:after, .wrapper .confines-width .content-page .tasks .button-add:hover:after, .wrapper .page-auth .container .tabs .content form .button-send:hover:after {
+.button:hover:after, .page-auth .container .tabs .content form .button-send:hover:after, .wrapper #header .confines-width .content-page .tasks .button-add:hover:after, .wrapper .confines-width .content-page .tasks .button-add:hover:after {
   left: -300%;
 }
 
-/* line 4, ../sass/app.scss */
-.wrapper {
-  background: white;
-  font-family: "Roboto-Regular", sans-serif;
-}
-/* line 7, ../sass/app.scss */
-.wrapper #header, .wrapper #footer {
-  width: 100%;
-  background: #549695;
-}
-/* line 12, ../sass/app.scss */
-.wrapper #header .confines-width {
-  padding: 10px 0;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  align-items: center;
-}
-/* line 17, ../sass/app.scss */
-.wrapper #header .confines-width .logo {
-  width: 150px;
-}
-/* line 19, ../sass/app.scss */
-.wrapper #header .confines-width .logo img {
-  max-width: 100%;
-}
-/* line 24, ../sass/app.scss */
-.wrapper #header .confines-width #navigation ul {
-  padding-left: 0;
-  list-style: none;
-}
-/* line 28, ../sass/app.scss */
-.wrapper #header .confines-width #navigation ul a {
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 10px 15px 7px;
-  cursor: pointer;
-  padding-bottom: 15px;
-  border-bottom: 1px solid transparent;
-  -webkit-transition: 0.3s all;
-  transition: 0.3s all;
-  border-bottom: 1px solid transparent;
-}
-/* line 63, ../sass/_mixins.scss */
-.wrapper #header .confines-width #navigation ul a:hover {
-  padding-bottom: 4px;
-  border-color: white;
-}
-/* line 42, ../sass/app.scss */
-.wrapper #header .confines-width, .wrapper .confines-width {
-  margin: 15px auto;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-}
-/* line 47, ../sass/app.scss */
-.wrapper #header .confines-width .content-page, .wrapper .confines-width .content-page {
-  width: 100%;
-}
-/* line 49, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks, .wrapper .confines-width .content-page .tasks {
-  width: 100%;
-}
-/* line 51, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .title, .wrapper .confines-width .content-page .tasks .title {
-  margin: 15px 0;
-  display: inline-block;
-}
-/* line 55, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .button-add, .wrapper .confines-width .content-page .tasks .button-add {
-  margin: 10px 0 0 0;
-}
-/* line 60, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row, .wrapper .confines-width .content-page .tasks .list .row {
-  border-bottom: 1px solid #549695;
-  padding: 15px 10px;
-  font: 18px "Roboto-Light";
-}
-/* line 65, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row .name, .wrapper .confines-width .content-page .tasks .list .row .name {
-  width: 25%;
-}
-/* line 68, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row .executor, .wrapper .confines-width .content-page .tasks .list .row .executor {
-  width: 25%;
-}
-/* line 71, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row .status, .wrapper .confines-width .content-page .tasks .list .row .status {
-  width: 20%;
-}
-/* line 74, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row .dates, .wrapper .confines-width .content-page .tasks .list .row .dates {
-  width: 30%;
-  text-align: center;
-}
-/* line 78, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row select, .wrapper .confines-width .content-page .tasks .list .row select {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  max-width: 100%;
-  font: 18px "Roboto-Light";
-}
-/* line 84, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row select option, .wrapper .confines-width .content-page .tasks .list .row select option {
-  cursor: pointer;
-}
-/* line 88, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row.head-row, .wrapper .confines-width .content-page .tasks .list .row.head-row {
-  font: 20px "Roboto-Regular";
-  background: #549695;
-  color: white;
-}
-/* line 92, ../sass/app.scss */
-.wrapper #header .confines-width .content-page .tasks .list .row.head-row .executor, .wrapper .confines-width .content-page .tasks .list .row.head-row .executor, .wrapper #header .confines-width .content-page .tasks .list .row.head-row .status, .wrapper .confines-width .content-page .tasks .list .row.head-row .status {
-  padding-left: 5px;
-}
-/* line 102, ../sass/app.scss */
-.wrapper #footer {
-  position: absolute;
-  bottom: 0;
-}
-/* line 106, ../sass/app.scss */
-.wrapper .page-auth {
+/* line 2, ../sass/_auth.scss */
+.page-auth {
   width: 100%;
   min-height: 100vh;
   background-image: url(../images/bg.jpg);
@@ -198,8 +75,8 @@
   align-items: center;
   position: relative;
 }
-/* line 114, ../sass/app.scss */
-.wrapper .page-auth:after {
+/* line 10, ../sass/_auth.scss */
+.page-auth:after {
   content: '';
   width: 100%;
   height: 100%;
@@ -208,30 +85,30 @@
   left: 0;
   background: rgba(255, 255, 255, 0.3);
 }
-/* line 123, ../sass/app.scss */
-.wrapper .page-auth .container {
+/* line 19, ../sass/_auth.scss */
+.page-auth .container {
   position: relative;
   z-index: 1;
   width: 95%;
   max-width: 500px;
   top: -50px;
 }
-/* line 129, ../sass/app.scss */
-.wrapper .page-auth .container .tabs {
+/* line 25, ../sass/_auth.scss */
+.page-auth .container .tabs {
   position: relative;
   width: 100%;
 }
-/* line 132, ../sass/app.scss */
-.wrapper .page-auth .container .tabs input.tab-selector {
+/* line 28, ../sass/_auth.scss */
+.page-auth .container .tabs input.tab-selector {
   display: none;
 }
-/* line 134, ../sass/app.scss */
-.wrapper .page-auth .container .tabs input.tab-selector:checked + label {
+/* line 30, ../sass/_auth.scss */
+.page-auth .container .tabs input.tab-selector:checked + label {
   background: rgba(255, 255, 255, 0.6);
   color: #549695;
 }
-/* line 139, ../sass/app.scss */
-.wrapper .page-auth .container .tabs label.tab-label {
+/* line 35, ../sass/_auth.scss */
+.page-auth .container .tabs label.tab-label {
   cursor: pointer;
   width: 130px;
   padding: 13px 5px;
@@ -243,43 +120,43 @@
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
-/* line 149, ../sass/app.scss */
-.wrapper .page-auth .container .tabs label.tab-label:hover {
+/* line 45, ../sass/_auth.scss */
+.page-auth .container .tabs label.tab-label:hover {
   background: #48807F;
 }
-/* line 152, ../sass/app.scss */
-.wrapper .page-auth .container .tabs label.tab-label.tab-label-2 {
+/* line 48, ../sass/_auth.scss */
+.page-auth .container .tabs label.tab-label.tab-label-2 {
   margin-left: -5px;
 }
 @media (max-width: 480px) {
-  /* line 155, ../sass/app.scss */
-  .wrapper .page-auth .container .tabs label.tab-label.tab-label-2 {
+  /* line 51, ../sass/_auth.scss */
+  .page-auth .container .tabs label.tab-label.tab-label-2 {
     float: right;
     margin-left: 0;
   }
 }
 @media (max-width: 480px) {
-  /* line 162, ../sass/app.scss */
-  .wrapper .page-auth .container .tabs label.tab-label {
+  /* line 58, ../sass/_auth.scss */
+  .page-auth .container .tabs label.tab-label {
     width: 50%;
   }
 }
-/* line 167, ../sass/app.scss */
-.wrapper .page-auth .container .tabs input.tab-selector-1:checked ~ .content .sign-in-form,
-.wrapper .page-auth .container .tabs input.tab-selector-2:checked ~ .content .sign-up-form {
+/* line 63, ../sass/_auth.scss */
+.page-auth .container .tabs input.tab-selector-1:checked ~ .content .sign-in-form,
+.page-auth .container .tabs input.tab-selector-2:checked ~ .content .sign-up-form {
   z-index: 100;
   opacity: 1;
   transition: all ease-out 0.33s 0.23s;
 }
-/* line 173, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content {
+/* line 69, ../sass/_auth.scss */
+.page-auth .container .tabs .content {
   background: rgba(255, 255, 255, 0.6);
   min-height: 255px;
   padding: 20px 5%;
   position: relative;
 }
-/* line 178, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form {
+/* line 74, ../sass/_auth.scss */
+.page-auth .container .tabs .content form {
   position: absolute;
   top: 50%;
   left: 5%;
@@ -290,8 +167,8 @@
   transform: translateY(-50%);
   transition: all ease-out 0.2s 0.1s;
 }
-/* line 188, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .input {
+/* line 84, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .input {
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -301,8 +178,8 @@
   overflow: hidden;
   padding-top: 1em;
 }
-/* line 199, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .input__field {
+/* line 95, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .input__field {
   position: relative;
   display: block;
   float: right;
@@ -317,12 +194,12 @@
   color: #9da8b2;
   font-size: 1.25em;
 }
-/* line 214, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .input__field:focus {
+/* line 110, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .input__field:focus {
   outline: none;
 }
-/* line 218, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .input__label {
+/* line 114, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .input__label {
   display: inline-block;
   float: right;
   padding: 0 1em;
@@ -347,15 +224,15 @@
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-/* line 244, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .input__label-content {
+/* line 140, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .input__label-content {
   position: relative;
   display: block;
   padding: 1.6em 0;
   width: 100%;
 }
-/* line 251, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .graphic {
+/* line 147, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .graphic {
   position: absolute;
   top: 0;
   left: 0;
@@ -367,20 +244,338 @@
   -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
   transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
 }
-/* line 264, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .icon {
+/* line 160, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .icon {
   color: #ddd;
   font-size: 150%;
 }
-/* line 269, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .input--filled .input__label {
+/* line 165, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .input--filled .input__label {
   color: #333;
   -webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
   transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
 }
-/* line 275, ../sass/app.scss */
-.wrapper .page-auth .container .tabs .content form .input--filled .graphic {
+/* line 171, ../sass/_auth.scss */
+.page-auth .container .tabs .content form .input--filled .graphic {
   stroke: #333;
   -webkit-transform: translate3d(-66.6%, 0, 0);
   transform: translate3d(-66.6%, 0, 0);
+}
+
+/* line 7, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width #burger span:nth-child(1), body.open-menu .wrapper #header .confines-width #burger span:nth-child(6) {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 12, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width #burger span:nth-child(2), body.open-menu .wrapper #header .confines-width #burger span:nth-child(5) {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+/* line 17, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width #burger span:nth-child(1) {
+  left: 2.5px;
+  top: 3.5px;
+}
+/* line 22, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width #burger span:nth-child(2) {
+  left: calc(50% - 2.5px);
+  top: 3.5px;
+}
+/* line 27, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width #burger span:nth-child(3) {
+  left: -50%;
+  opacity: 0;
+}
+/* line 32, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width #burger span:nth-child(4) {
+  left: 100%;
+  opacity: 0;
+}
+/* line 37, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width #burger span:nth-child(5) {
+  left: 4px;
+  top: 13.5px;
+}
+/* line 42, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width #burger span:nth-child(6) {
+  left: calc(50% - 3px);
+  top: 13.5px;
+}
+/* line 47, ../sass/app.scss */
+body.open-menu .wrapper #header .confines-width .right-part {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/* line 53, ../sass/app.scss */
+.wrapper {
+  background: white;
+  font-family: "Roboto-Regular", sans-serif;
+}
+/* line 56, ../sass/app.scss */
+.wrapper #header, .wrapper #footer {
+  width: 100%;
+  background: #549695;
+}
+/* line 61, ../sass/app.scss */
+.wrapper #header .confines-width {
+  margin-top: 0 !important;
+  padding: 10px 0;
+  height: 80px;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 69, ../sass/app.scss */
+.wrapper #header .confines-width .left-part .logo {
+  width: 150px;
+}
+/* line 71, ../sass/app.scss */
+.wrapper #header .confines-width .left-part .logo img {
+  max-width: 100%;
+}
+/* line 76, ../sass/app.scss */
+.wrapper #header .confines-width .right-part {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  align-items: center;
+  width: calc(100% - 155px);
+}
+/* line 81, ../sass/app.scss */
+.wrapper #header .confines-width .right-part #navigation ul {
+  padding-left: 0;
+  list-style: none;
+}
+/* line 85, ../sass/app.scss */
+.wrapper #header .confines-width .right-part #navigation ul a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px 0px 7px;
+  cursor: pointer;
+  margin: 0 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid transparent;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+  border-bottom: 1px solid transparent;
+}
+/* line 63, ../sass/_mixins.scss */
+.wrapper #header .confines-width .right-part #navigation ul a:hover {
+  padding-bottom: 4px;
+  border-color: white;
+}
+/* line 97, ../sass/app.scss */
+.wrapper #header .confines-width .right-part .personal-links {
+  list-style: none;
+  color: white;
+  font: 18px "Roboto-Regular", sans-serif;
+  padding-left: 0;
+  cursor: pointer;
+  margin: 10px 0;
+}
+/* line 105, ../sass/app.scss */
+.wrapper #header .confines-width .right-part .personal-links li {
+  margin: 0 10px;
+}
+/* line 107, ../sass/app.scss */
+.wrapper #header .confines-width .right-part .personal-links li:last-child {
+  margin-right: 0;
+  position: relative;
+}
+/* line 110, ../sass/app.scss */
+.wrapper #header .confines-width .right-part .personal-links li:last-child:before {
+  content: "/";
+  position: absolute;
+  left: -13px;
+  top: 0;
+}
+/* line 118, ../sass/app.scss */
+.wrapper #header .confines-width .right-part .personal-links a {
+  color: white;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 15px;
+  border-bottom: 1px solid transparent;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+  padding: 10px 0px 11px;
+  text-transform: uppercase;
+}
+/* line 63, ../sass/_mixins.scss */
+.wrapper #header .confines-width .right-part .personal-links a:hover {
+  padding-bottom: 4px;
+  border-color: white;
+}
+@media (max-width: 768px) {
+  /* line 76, ../sass/app.scss */
+  .wrapper #header .confines-width .right-part {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    min-height: 100vh;
+    background: white;
+    z-index: 10;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: .5s transform ease-in-out;
+    transition: .5s transform ease-in-out;
+  }
+  /* line 141, ../sass/app.scss */
+  .wrapper #header .confines-width .right-part #navigation ul {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  /* line 143, ../sass/app.scss */
+  .wrapper #header .confines-width .right-part #navigation ul a {
+    color: red;
+  }
+  /* line 149, ../sass/app.scss */
+  .wrapper #header .confines-width .right-part .personal-links a {
+    color: red;
+  }
+}
+/* line 155, ../sass/app.scss */
+.wrapper #header .confines-width #burger {
+  display: none;
+  width: 30px;
+  height: 22.5px;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+/* line 164, ../sass/app.scss */
+.wrapper #header .confines-width #burger span {
+  display: block;
+  position: absolute;
+  height: 4.5px;
+  width: 50%;
+  background: white;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+/* line 178, ../sass/app.scss */
+.wrapper #header .confines-width #burger span:nth-child(even) {
+  left: 50%;
+}
+/* line 182, ../sass/app.scss */
+.wrapper #header .confines-width #burger span:nth-child(odd) {
+  left: 0px;
+}
+/* line 186, ../sass/app.scss */
+.wrapper #header .confines-width #burger span:nth-child(1), .wrapper #header .confines-width #burger span:nth-child(2) {
+  top: 0px;
+}
+/* line 190, ../sass/app.scss */
+.wrapper #header .confines-width #burger span:nth-child(3), .wrapper #header .confines-width #burger span:nth-child(4) {
+  top: 9px;
+}
+/* line 194, ../sass/app.scss */
+.wrapper #header .confines-width #burger span:nth-child(5), .wrapper #header .confines-width #burger span:nth-child(6) {
+  top: 18px;
+}
+@media (max-width: 768px) {
+  /* line 199, ../sass/app.scss */
+  .wrapper #header .confines-width #burger {
+    display: block;
+  }
+}
+/* line 206, ../sass/app.scss */
+.wrapper #header .confines-width, .wrapper .confines-width {
+  margin: 15px auto;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+/* line 211, ../sass/app.scss */
+.wrapper #header .confines-width .content-page, .wrapper .confines-width .content-page {
+  width: 100%;
+}
+/* line 213, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks, .wrapper .confines-width .content-page .tasks {
+  width: 100%;
+}
+/* line 215, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .title, .wrapper .confines-width .content-page .tasks .title {
+  margin: 15px 0;
+  display: inline-block;
+}
+/* line 219, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .button-add, .wrapper .confines-width .content-page .tasks .button-add {
+  margin: 10px 0 0 0;
+}
+/* line 224, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row, .wrapper .confines-width .content-page .tasks .list .row {
+  border-bottom: 1px solid #549695;
+  padding: 15px 10px;
+  font: 18px "Roboto-Light";
+}
+/* line 229, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row .name, .wrapper .confines-width .content-page .tasks .list .row .name {
+  width: 25%;
+}
+/* line 232, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row .executor, .wrapper .confines-width .content-page .tasks .list .row .executor {
+  width: 25%;
+}
+/* line 235, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row .status, .wrapper .confines-width .content-page .tasks .list .row .status {
+  width: 20%;
+}
+/* line 238, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row .dates, .wrapper .confines-width .content-page .tasks .list .row .dates {
+  width: 30%;
+  text-align: center;
+}
+/* line 242, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row select, .wrapper .confines-width .content-page .tasks .list .row select {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  max-width: 100%;
+  font: 18px "Roboto-Light";
+}
+/* line 248, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row select option, .wrapper .confines-width .content-page .tasks .list .row select option {
+  cursor: pointer;
+}
+/* line 252, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row.head-row, .wrapper .confines-width .content-page .tasks .list .row.head-row {
+  font: 20px "Roboto-Regular";
+  background: #549695;
+  color: white;
+}
+/* line 256, ../sass/app.scss */
+.wrapper #header .confines-width .content-page .tasks .list .row.head-row .executor, .wrapper .confines-width .content-page .tasks .list .row.head-row .executor, .wrapper #header .confines-width .content-page .tasks .list .row.head-row .status, .wrapper .confines-width .content-page .tasks .list .row.head-row .status {
+  padding-left: 5px;
+}
+@media (max-width: 768px) {
+  /* line 261, ../sass/app.scss */
+  .wrapper #header .confines-width .content-page .tasks .list .row, .wrapper .confines-width .content-page .tasks .list .row, .wrapper #header .confines-width .content-page .tasks .list .row select, .wrapper .confines-width .content-page .tasks .list .row select {
+    font-size: 14px;
+  }
+  /* line 264, ../sass/app.scss */
+  .wrapper #header .confines-width .content-page .tasks .list .row.head-row, .wrapper .confines-width .content-page .tasks .list .row.head-row {
+    font-size: 15px;
+  }
+}
+/* line 274, ../sass/app.scss */
+.wrapper #footer {
+  position: absolute;
+  bottom: 0;
 }
