@@ -1,21 +1,24 @@
 <?php
 
-namespace App\User;
+use App\BaseModel;
+use App\Role;
 
-class User
+namespace App;
+
+class User extend App\BaseModel
 {
     private $id;
     private $name;
     private $role;
     private $username;
 
-    // TODO: Grab user from DB by id. Also gets role object.
-    public function __construct($id)
+    // TODO: Override BaseModel method to grab the role object into this
+    public function get($id)
     {
 
     }
 
-    private function getRole()
+    public function getRole()
     {
 
     }
