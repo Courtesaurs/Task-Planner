@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <head>
 	<meta charset="UTF-8">
-	<title>Todo-list</title>
+	<title>Profile</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../static/css/normalize.css">
 	<link rel="stylesheet" href="../static/css/app.css">
@@ -38,6 +38,26 @@
 		</header>
 		<div class="confines-width">
 			<main class="content-page">
+				<section class="profile-info">
+					<div class="left-part">
+						<div class="container-img"><img src="../static/images/avatar.jpg" alt="avatar"></div>
+					</div>
+					<div class="right-part">
+						<div class="name">Leonid Agutin</div>
+						<div class="username">@agushka</div>
+						<div class="row"><span class="property">Email: </span><span class="value">agushka@gmail.com</span></div>
+						<div class="row"><span class="property">Роль: </span>
+							<span class="value"> 
+								<select name="select-role">
+									<option value="">Choose role</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>
+						 	</span>
+						 </div>
+						<div class="row"><span class="property">Должность: </span><span class="value"> test post </span></div>
+					</div>					
+				</section>
 				<section class="tasks">
 					<h1 class="title">Tasks</h1>
 					<div class="button-add">Add</div>					

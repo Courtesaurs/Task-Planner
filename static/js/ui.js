@@ -13,7 +13,13 @@ jQuery(document).ready(function($){
 	});
   
 /*------------------------------------ */
-  
+
+/*-------- Burger Animations ----------*/
+
+	$('#burger').click(function() {
+		$('body').toggleClass('open-menu');
+	});
+
 
 });
 
