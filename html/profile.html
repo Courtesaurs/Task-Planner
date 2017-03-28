@@ -4,6 +4,7 @@
 	<title>Profile</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../static/css/normalize.css">
+	<link rel="stylesheet" href="../static/css/lib/datepicker.min.css">
 	<link rel="stylesheet" href="../static/css/app.css">
 </head>
 <body>
@@ -60,7 +61,7 @@
 				</section>
 				<section class="tasks">
 					<h1 class="title">Tasks</h1>
-					<div class="button-add">Add</div>					
+					<!-- <div class="button-add">Add</div>					 -->
 					<div class="list">
 						<div class="row head-row">
 							<div class="name">Title</div>
@@ -112,9 +113,56 @@
 				</section>
 			</main> 
 		</div>
+		<div id="add-task-button">Add</div>
+		<div class="popup-add-task">
+			<div id="close-popup"></div>
+			<div class="container">
+				<h2>Add task</h2>
+				<form action="">
+					<div class="row-input">
+						 <span class="input">
+							<input class="input__field" type="text" id="name-task" />
+							<label class="input__label" for="name-task">
+								<span class="input__label-content">Name</span>
+							</label>
+							<svg class="graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+								<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+							</svg>
+						</span>
+					</div>
+					<div class="row-input">	
+						<span class="input">
+							<textarea class="input__field" id="description-task">
+							</textarea>
+							<label class="input__label" for="description-task">
+								<span class="input__label-content">Description</span>
+							</label>
+							<svg class="graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+								<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+							</svg>
+						</span>
+					</div>
+					<div class="row-input">	
+						<span class="input date">
+							<input class="input__field datepicker-here" id="time-task"> 
+							<label class="input__label" for="time-task">
+								<span class="input__label-content">Date</span>
+							</label>
+							<svg class="graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+								<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+							</svg>
+						</span>
+					</div>
+					<div class="row-input">
+						<button type="submit" class="button-send">Send</button>
+					</div>
+				</form>
+			</div>
+		</div>
 		<footer id="footer"></footer>
 	</div>  
 	<script src="../static/js/lib/jquery-3.2.0.min.js"></script>
+	<script src="../static/js/lib/datepicker.min.js"></script>
 	<script src="../static/js/ui.js"></script>
 </body>
 </html>
