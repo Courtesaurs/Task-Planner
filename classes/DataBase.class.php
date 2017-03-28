@@ -11,7 +11,7 @@ class DataBase
     {
         try {
 
-            $this->pdo = new \PDO ("mysql:host=localhost;dbname=task_manager", "root", "1337");
+            $this->pdo = new \PDO ("mysql:host=localhost;dbname=tasm_manager1", "root", "1337");
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         } catch (PDOException $e) {
@@ -19,6 +19,11 @@ class DataBase
             echo 'DB connection failed: ' . $e->getMessage();
 
         }
+    }
+    
+    public static function initDataBase()
+    {
+        // TODO: тут вызываем createTable() всех моделей в нужной последовательности
     }
 
     /* TODO: some smart filtering. Supporting "AND", "OR", "=", ">" and so on
