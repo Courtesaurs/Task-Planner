@@ -12,7 +12,7 @@
 		@include alignBoth(space-between, center);
 		.left-part { 
 			.logo {
-				width: 150px;
+				width: 250px;
 				img {
 					max-width: 100%;
 				}
@@ -21,7 +21,7 @@
 		.right-part {
 			@extend .flex;
 			@include alignBoth(space-between, center);
-			width: calc(100% - 155px);
+			width: calc(100% - 255px);
 			#navigation {
 				ul {
 					@extend .flex;

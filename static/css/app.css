@@ -79,7 +79,7 @@
 }
 /* line 14, ../sass/_header.scss */
 #header .confines-width .left-part .logo {
-  width: 150px;
+  width: 250px;
 }
 /* line 16, ../sass/_header.scss */
 #header .confines-width .left-part .logo img {
@@ -91,7 +91,7 @@
   justify-content: space-between;
   -webkit-align-items: center;
   align-items: center;
-  width: calc(100% - 155px);
+  width: calc(100% - 255px);
 }
 /* line 26, ../sass/_header.scss */
 #header .confines-width .right-part #navigation ul {
