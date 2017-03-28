@@ -61,7 +61,7 @@ class Task
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
-            return Task($row->title, $row->description, $row->id);
+            return new Task($row->title, $row->description, $row->id);
 
         }
         catch (PDOException $e)
