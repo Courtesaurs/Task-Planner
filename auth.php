@@ -4,12 +4,12 @@ require_once dirname(__FILE__) . '/classes/User.class.php';
 
 $user = new \App\User(
 	$_POST['login'],
-	0,
+	1,
 	$_POST['login'],
 	$_POST['password']
 );
 
-$result = $user->register();
+$result = $user->save();
 
 header("Location: /tasks-list.php");
 die();
