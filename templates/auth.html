@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Auth</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/normalize.css">
+	<link rel="stylesheet" href="../static/css/app.css">
+</head>
+<body>
+	<div class="wrapper">
+		<section class="page-auth">
+			<div class="container">
+				<div class="tabs"> 
+				    <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1 tab-selector" checked="checked" />
+					<label for="tab-1" class="tab-label-1 tab-label">Sign In</label>
+					
+					<input id="tab-2" type="radio" name="radio-set" class="tab-selector-2 tab-selector" />
+					<label for="tab-2" class="tab-label-2  tab-label">Sign Up</label>  
+					<div class="content">
+						<form class="sign-in-form" method="post">
+				            <div class="row-input">
+					            <span class="input">
+									<input class="input__field" type="text" id="name-sign-in" name="login" />
+									<label class="input__label" for="name-sign-in">
+										<span class="input__label-content">Username</span>
+									</label>
+									<svg class="graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+										<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									</svg>
+								</span>
+							</div>
+							<div class="row-input">
+					            <span class="input">
+									<input class="input__field" type="password" id="password-sign-in" name="password" />
+									<label class="input__label" for="password-sign-in">
+										<span class="input__label-content">Password</span>
+									</label>
+									<svg class="graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+										<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									</svg>
+								</span>
+							</div>
+							<div class="row-input">
+								<button type="submit" class="button-send button-sign-in">Send</button>
+							</div>
+						</form>
+						<form class="sign-up-form" method="post" action="auth.php">						
+				            <div class="row-input">
+					            <span class="input">
+									<input class="input__field" type="text" id="name-sign-up" name="login" />
+									<label class="input__label" for="name-sign-up">
+										<span class="input__label-content">Username</span>
+									</label>
+									<svg class="graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+										<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									</svg>
+								</span>
+							</div> 
+							<div class="row-input">
+					            <span class="input">
+									<input class="input__field" type="password" id="password-sign-up" name="password" s/>
+									<label class="input__label" for="password-sign-up">
+										<span class="input__label-content">Password</span>
+									</label>
+									<svg class="graphic" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+										<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									</svg>
+								</span>
+							</div>
+							<div class="row-input">
+								<button type="submit" class="button-send button-sign-up">Send</button>
+							</div>
+						</form> 
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>  
+	<script src="../static/js/lib/jquery-3.2.0.min.js"></script>
+	<script src="../static/js/ui.js"></script>
+</body>
+</html>
