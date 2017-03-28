@@ -5,15 +5,16 @@
 
 namespace App;
 
-require dirname(__FILE__) . "/DataBase.class.php";
+require_once dirname(__FILE__) . "/DataBase.class.php";
+require_once dirname(__FILE__) . "/Role.class.php";
 
 class User // extends App\BaseModel
 {
-    private $id;
-    private $name;
-    private $role;
-    private $username;
-    private $password;
+    public $id;
+    public $name;
+    public $role;
+    public $username;
+    public $password;
 
     public function __construct($name, $role_id, $username, $password)
     {
@@ -34,8 +35,7 @@ class User // extends App\BaseModel
 
         try
         {
-
-            $query = "INSERT INTO user (`name`, `role_id`, `username`, `password`) VALUES ('$this->name', '$this->role', '$this->username', '$this->password');";
+            $query = "INSERT INTO user (`name`, `role_id`, `username`, `password`) VALUES ('$this->name', '". $this->role->id ."', '$this->username', '$this->password');";
             $result = $db->pdo->query($query);
 
             return $result;
