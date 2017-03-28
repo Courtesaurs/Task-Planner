@@ -83,6 +83,7 @@ class User // extends App\BaseModel
 
     }
 
+    //TODO: filters
     public static function getObjects($args)
     {
         $db = new DataBase();
@@ -90,16 +91,18 @@ class User // extends App\BaseModel
         try
         {
             $sql = "SELECT * FROM user";
+//            $sql .= DataBase::filter($args);
+
             $stmt = $db->pdo->query($sql);
 
             $users = array();
             foreach($stmt as $row) {
                 $users[] = new Role(
-                    $row->name,
-                    $row->role_id,
-                    $row->username,
-                    $row->password,
-                    $row->id
+                    $row['name'],
+                    $row['role_id'],
+                    $row['username'],
+                    $row['password'],
+                    $row['id']
                 );
             }
 

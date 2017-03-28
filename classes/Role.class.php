@@ -51,9 +51,21 @@ class Role
         {
 
             $query = "SELECT * FROM user WHERE user.role_id=".$this->id;
-            $result = $db->pdo->query($query);
+            $stmt = $db->pdo->query($query);
 
-            return $result;
+            $users = array();
+            foreach($stmt as $row) {
+                $users[] = new User(
+                    $row['name'],
+                    $row['description'],
+                    $row['status'],
+                    $row['deadline'],
+                    $row['id']
+                );
+            }
+
+            return $users;
+
 
         }
         catch (PDOException $e)

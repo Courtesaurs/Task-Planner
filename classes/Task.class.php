@@ -82,10 +82,10 @@ class Task
             $tasks = array();
             foreach($stmt as $row) {
                 $tasks[] = new Task(
-                    $row['title'],
-                    $row['description'],
-                    $row['status'],
-                    $row['deadline'],
+                    $row['name'],
+                    $row['role_id'],
+                    $row['username'],
+                    $row['password'],
                     $row['id']
                 );
             }
