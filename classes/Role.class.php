@@ -2,7 +2,7 @@
 
 namespace App;
 
-require dirname(__FILE__) . "/DataBase.class.php";
+require_once dirname(__FILE__) . "/DataBase.class.php";
 
 class Role
 {

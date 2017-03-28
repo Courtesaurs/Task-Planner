@@ -8,12 +8,12 @@
 
 namespace App;
 
-require dirname(__FILE__). "/DataBase.class.php";
+require_once dirname(__FILE__). "/DataBase.class.php";
 
 
 class Task
 {
-    private $id;
+    public $id;
     public $title;
     public $descritpion;
     public $status;
