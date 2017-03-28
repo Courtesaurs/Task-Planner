@@ -20,4 +20,20 @@ class DataBase
 
         }
     }
+
+    /* TODO: some smart filtering. Supporting "AND", "OR", "=", ">" and so on
+    public static function filter($args)
+    {
+        $sql = '';
+
+        if($args) {
+            $sql .= " WHERE ";
+
+            foreach($args as $criteria => $value) {
+                $sql .= "$criteria=$value";
+            }
+        }
+
+        return $sql;
+    } */
 }
