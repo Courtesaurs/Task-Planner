@@ -8,10 +8,11 @@
 
 namespace App;
 
+require_once dirname(__FILE__) . "/AbstractModel.class.php";
 require_once dirname(__FILE__). "/DataBase.class.php";
 
 
-class Task
+class Task extends AbstractModel
 {
     public $id;
     public $title;
@@ -97,5 +98,10 @@ class Task
         {
             echo 'Failed to get the task: ' . $e->getMessage();
         }
+    }
+
+    public static function createTable()
+    {
+        // TODO: Implement createTable() method.
     }
 }
