@@ -8,6 +8,7 @@ namespace App;
 require_once dirname(__FILE__) . "/AbstractModel.class.php";
 require_once dirname(__FILE__) . "/DataBase.class.php";
 require_once dirname(__FILE__) . "/Role.class.php";
+require_once dirname(__FILE__) . "/Task.class.php";
 
 class User extends AbstractModel
 {
@@ -69,7 +70,33 @@ class User extends AbstractModel
     }
 
     public function getTasks() {
+        $db = new DataBase();
 
+        try
+        {
+            $sql = "SELECT * FROM task WHERE task.user_id=$this->id";
+            $stmt = $db->pdo->query($sql);
+
+            $tasks = array();
+            foreach($stmt as $row) {
+                $tasks[] = new Task(
+                    $row['title'],
+                    $row['description'],
+                    $row['status_id'],
+                    // TODO: no deadline record in table.
+                    // $row['deadline'],
+                    $row['id'],
+                    $row['user_id']
+                );
+            }
+
+            return $tasks;
+
+        }
+        catch (\PDOException $e)
+        {
+            echo 'Failed to get the task: ' . $e->getMessage();
+        }
     }
 
     public function assignToRole($role_id) {
@@ -93,7 +120,27 @@ class User extends AbstractModel
 
             echo 'Failed to get the user: ' . $e->getMessage();
         }
+    }
 
+    public static function getByName($name)
+    {
+
+        $db = new DataBase();
+
+        try {
+
+            $sql = "SELECT * FROM user WHERE username=$name";
+//            die(var_dump($sql));
+            $stmt = $db->pdo->query($sql);
+            $row = $stmt->fetchObject();
+
+            return new User($row->name, $row->role_id, $row->username, $row->password, $row->id);
+
+        }
+        catch (\PDOException $e) {
+
+            echo 'Failed to get the user: ' . $e->getMessage();
+        }
     }
 
     //TODO: filters
