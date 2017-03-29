@@ -28,7 +28,7 @@
                     </div>
                     <div class="status">
                         
-                        <select name="select-status" title="{{ task.status}}">
+                        <select name="select-status" title="{{ task.status }}">
                             {% for status in statuses %}
                                 <option value="{{ status.name }}" {{ task.status == status.description ? "selected" : "" }} > {{ status.name }} </option>
                             {% endfor %}

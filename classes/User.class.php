@@ -45,7 +45,27 @@ class User extends AbstractModel
     }
 
     public function login() {
-        
+
+        $db = new DataBase();
+
+        $login = false;
+
+        try {
+            $query = "SELECT username, password, id FROM user WHERE username='$this->username'";
+            $result = $db->pdo->query($query);
+            while ($row = $result->fetch()) {
+                if($row['password'] == $this->password) {
+                    $login = true;
+                }
+            }
+
+        }
+        catch (\PDOException $e) {
+            echo ('Failed to login: ' . $e->getMessage());
+            $result = false;
+        }
+
+        return $login;
     }
 
     public function getTasks() {
