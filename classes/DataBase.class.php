@@ -11,7 +11,7 @@ class DataBase
     {
         try {
 
-            $this->pdo = new \PDO ("mysql:host=localhost;dbname=task_manager", "root", "s7plma8d");
+            $this->pdo = new \PDO ("mysql:host=localhost;dbname=task_manager", "root", "1337");
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         } catch (\PDOException $e) {
