@@ -18,8 +18,5 @@ if( $user->save() ) {
 	$_SESSION['login'] = $login;
 }
 
-
-
-
-header("Location: /tasks-list.php");
+header("Location: /");
 die();
