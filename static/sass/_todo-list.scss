@@ -49,6 +49,12 @@
 				&, select {
 					font-size: 14px;
 				}
+				.executor {
+					width: 130px;
+				}
+				.dates {
+					width: calc(75% - 270px);
+				}
 				&.head-row {
 					font-size: 15px;
 				}

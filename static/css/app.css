@@ -179,21 +179,44 @@
     -webkit-transition: .5s transform ease-in-out;
     transition: .5s transform ease-in-out;
   }
-  /* line 86, ../sass/_header.scss */
+  /* line 85, ../sass/_header.scss */
+  #header .confines-width .right-part #navigation {
+    width: 90%;
+    margin: 10px auto;
+  }
+  /* line 88, ../sass/_header.scss */
   #header .confines-width .right-part #navigation ul {
     -webkit-flex-direction: column;
     flex-direction: column;
   }
-  /* line 88, ../sass/_header.scss */
-  #header .confines-width .right-part #navigation ul a {
-    color: red;
+  /* line 89, ../sass/_header.scss */
+  #header .confines-width .right-part #navigation ul li {
+    margin: 20px 0;
   }
-  /* line 94, ../sass/_header.scss */
+  /* line 93, ../sass/_header.scss */
+  #header .confines-width .right-part #navigation ul a {
+    color: #549695;
+  }
+  /* line 98, ../sass/_header.scss */
+  #header .confines-width .right-part .personal-links {
+    width: 100%;
+    padding: 0 5%;
+    border-bottom: 1px solid #549695;
+    height: 70px;
+    color: grey;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  /* line 107, ../sass/_header.scss */
   #header .confines-width .right-part .personal-links a {
-    color: red;
+    color: #549695;
   }
 }
-/* line 100, ../sass/_header.scss */
+/* line 113, ../sass/_header.scss */
 #header .confines-width #burger {
   display: none;
   width: 30px;
@@ -204,7 +227,7 @@
   transition: .5s ease-in-out;
   cursor: pointer;
 }
-/* line 109, ../sass/_header.scss */
+/* line 122, ../sass/_header.scss */
 #header .confines-width #burger span {
   display: block;
   position: absolute;
@@ -219,74 +242,74 @@
   -o-transition: .25s ease-in-out;
   transition: .25s ease-in-out;
 }
-/* line 123, ../sass/_header.scss */
+/* line 136, ../sass/_header.scss */
 #header .confines-width #burger span:nth-child(even) {
   left: 50%;
 }
-/* line 127, ../sass/_header.scss */
+/* line 140, ../sass/_header.scss */
 #header .confines-width #burger span:nth-child(odd) {
   left: 0px;
 }
-/* line 131, ../sass/_header.scss */
+/* line 144, ../sass/_header.scss */
 #header .confines-width #burger span:nth-child(1), #header .confines-width #burger span:nth-child(2) {
   top: 0px;
 }
-/* line 135, ../sass/_header.scss */
+/* line 148, ../sass/_header.scss */
 #header .confines-width #burger span:nth-child(3), #header .confines-width #burger span:nth-child(4) {
   top: 9px;
 }
-/* line 139, ../sass/_header.scss */
+/* line 152, ../sass/_header.scss */
 #header .confines-width #burger span:nth-child(5), #header .confines-width #burger span:nth-child(6) {
   top: 18px;
 }
 @media (max-width: 768px) {
-  /* line 144, ../sass/_header.scss */
+  /* line 157, ../sass/_header.scss */
   #header .confines-width #burger {
     display: block;
   }
 }
 
-/* line 155, ../sass/_header.scss */
+/* line 168, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width #burger span:nth-child(1), body.open-menu .wrapper #header .confines-width #burger span:nth-child(6) {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* line 160, ../sass/_header.scss */
+/* line 173, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width #burger span:nth-child(2), body.open-menu .wrapper #header .confines-width #burger span:nth-child(5) {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-/* line 165, ../sass/_header.scss */
+/* line 178, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width #burger span:nth-child(1) {
   left: 2.5px;
-  top: 3.5px;
+  top: 4.5px;
 }
-/* line 170, ../sass/_header.scss */
+/* line 183, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width #burger span:nth-child(2) {
   left: calc(50% - 2.5px);
   top: 3.5px;
 }
-/* line 175, ../sass/_header.scss */
+/* line 188, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width #burger span:nth-child(3) {
   left: -50%;
   opacity: 0;
 }
-/* line 180, ../sass/_header.scss */
+/* line 193, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width #burger span:nth-child(4) {
   left: 100%;
   opacity: 0;
 }
-/* line 185, ../sass/_header.scss */
+/* line 198, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width #burger span:nth-child(5) {
   left: 4px;
   top: 13.5px;
 }
-/* line 190, ../sass/_header.scss */
+/* line 203, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width #burger span:nth-child(6) {
   left: calc(50% - 3px);
   top: 13.5px;
 }
-/* line 195, ../sass/_header.scss */
+/* line 208, ../sass/_header.scss */
 body.open-menu .wrapper #header .confines-width .right-part {
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -586,6 +609,14 @@ body.open-menu .wrapper #header .confines-width .right-part {
     font-size: 14px;
   }
   /* line 52, ../sass/_todo-list.scss */
+  .wrapper #header .confines-width .content-page .tasks .list .row .executor, #header .wrapper .confines-width .content-page .tasks .list .row .executor, .wrapper .confines-width .content-page .tasks .list .row .executor {
+    width: 130px;
+  }
+  /* line 55, ../sass/_todo-list.scss */
+  .wrapper #header .confines-width .content-page .tasks .list .row .dates, #header .wrapper .confines-width .content-page .tasks .list .row .dates, .wrapper .confines-width .content-page .tasks .list .row .dates {
+    width: calc(75% - 270px);
+  }
+  /* line 58, ../sass/_todo-list.scss */
   .wrapper #header .confines-width .content-page .tasks .list .row.head-row, #header .wrapper .confines-width .content-page .tasks .list .row.head-row, .wrapper .confines-width .content-page .tasks .list .row.head-row {
     font-size: 15px;
   }
@@ -677,6 +708,28 @@ body.open-menu .wrapper #header .confines-width .right-part {
   .wrapper #header .confines-width .content-page .profile-info .left-part .container-img, #header .wrapper .confines-width .content-page .profile-info .left-part .container-img, .wrapper .confines-width .content-page .profile-info .left-part .container-img {
     margin: 0 auto;
   }
+}
+/* line 73, ../sass/_profile.scss */
+.wrapper #header .confines-width .content-page .select2, #header .wrapper .confines-width .content-page .select2, .wrapper .confines-width .content-page .select2 {
+  width: 100%;
+  max-width: 170px;
+  border-radius: 0;
+}
+/* line 78, ../sass/_profile.scss */
+.wrapper #header .confines-width .content-page .select2 + .select2-container--default .select2-selection--single, #header .wrapper .confines-width .content-page .select2 + .select2-container--default .select2-selection--single, .wrapper .confines-width .content-page .select2 + .select2-container--default .select2-selection--single {
+  border-radius: 0;
+  border-color: transparent;
+  border-bottom-color: #aaa;
+  outline: none;
+  margin-top: -3px;
+}
+/* line 84, ../sass/_profile.scss */
+.wrapper #header .confines-width .content-page .select2 + .select2-container--default .select2-selection--single .select2-selection__arrow b, #header .wrapper .confines-width .content-page .select2 + .select2-container--default .select2-selection--single .select2-selection__arrow b, .wrapper .confines-width .content-page .select2 + .select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #549695 transparent transparent transparent;
+}
+/* line 89, ../sass/_profile.scss */
+.wrapper #header .confines-width .content-page .select2 + .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b, #header .wrapper .confines-width .content-page .select2 + .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b, .wrapper .confines-width .content-page .select2 + .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #549695 transparent;
 }
 /* line 20, ../sass/app.scss */
 .wrapper #add-task-button {

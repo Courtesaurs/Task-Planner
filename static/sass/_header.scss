@@ -83,16 +83,29 @@
 				-webkit-transition: .5s transform ease-in-out;
 				transition: .5s transform ease-in-out;
 				#navigation { 
+					width: 90%;
+					margin: 10px auto;
 					ul {
+						li {
+							margin: 20px 0;
+						}
 						@include flexDir(column);
 						a {
-							color: red;
+							color: $green;
 						}
 					}
 				}
 				.personal-links { 
+					width: 100%;
+					padding: 0 5%;
+					border-bottom: 1px solid $green; 
+					height: 70px; 
+					color: grey;
+					display: -webkit-flex;
+					display: flex;
+					@include alignBoth(flex-start, center);
 					a {
-						color: red;
+						color: $green;
 					}
 				}
 			}
@@ -164,7 +177,7 @@ body.open-menu .wrapper #header .confines-width {
 
 		span:nth-child(1) {
 		  left: 2.5px;
-		  top: 3.5px;
+		  top: 4.5px;
 		}
 
 		span:nth-child(2) {

@@ -68,3 +68,27 @@
 		}
 	}
 }
+
+
+.select2 {
+	width: 100%;
+	max-width: 170px;
+	border-radius: 0;
+	&+.select2-container--default { 
+		.select2-selection--single {
+			border-radius: 0;
+			border-color: transparent;
+			border-bottom-color: #aaa;
+			outline: none;
+			margin-top: -3px;
+			.select2-selection__arrow b {
+				border-color: $green transparent transparent transparent;
+			}
+		}
+		&.select2-container--open .select2-selection--single{
+			.select2-selection__arrow b {
+				border-color: transparent transparent $green transparent;
+			}
+		}
+	}
+}
