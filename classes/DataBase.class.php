@@ -11,12 +11,12 @@ class DataBase
     {
         try {
 
-            $this->pdo = new \PDO ("mysql:host=localhost;dbname=tasm_manager1", "root", "1337");
+            $this->pdo = new \PDO ("mysql:host=localhost;dbname=task_manager", "root", "s7plma8d");
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
 
-            echo 'DB connection failed: ' . $e->getMessage();
+            //echo 'DB connection failed: ' . $e->getMessage();
 
         }
     }

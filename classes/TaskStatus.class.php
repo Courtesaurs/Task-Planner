@@ -5,11 +5,11 @@ namespace App;
 require_once dirname(__FILE__) . "/AbstractModel.class.php";
 require_once dirname(__FILE__) . "/DataBase.class.php";
 
-class Role extends AbstractModel
+class TaskStatus extends AbstractModel
 {
     public $id;
     public $name;
-    public $descritpion;
+    public $description;
 
     public function __construct($name, $description, $id=false)
     {
@@ -27,13 +27,13 @@ class Role extends AbstractModel
         try
         {
 
-            $query = "INSERT INTO task_status (`name`, `description`) VALUES ('$this->name', '$this->descritpion');";
+            $query = "INSERT INTO task_status (`name`, `description`) VALUES ('$this->name', '$this->description');";
             $result = $db->pdo->query($query);
 
             return $result;
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to create role: ' . $e->getMessage();
         }
@@ -65,7 +65,7 @@ class Role extends AbstractModel
 
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to get users: ' . $e->getMessage();
         }
@@ -85,13 +85,13 @@ class Role extends AbstractModel
             return new TaskStatus($row->title, $row->description, $row->id);
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to get the task status: ' . $e->getMessage();
         }
     }
 
-    public static function getObjects($args)
+    public static function getObjects($args=array())
     {
         $db = new DataBase();
 
@@ -100,19 +100,19 @@ class Role extends AbstractModel
             $sql = "SELECT * FROM task_status";
             $stmt = $db->pdo->query($sql);
 
-            $roles = array();
+            $statuses = array();
             foreach($stmt as $row) {
-                $roles[] = new TaskStatus(
+                $statuses[] = new TaskStatus(
                     $row['title'],
                     $row['description'],
                     $row['id']
                 );
             }
 
-            return $roles;
+            return $statuses;
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to get the task status: ' . $e->getMessage();
         }

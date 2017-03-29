@@ -17,59 +17,51 @@ class User extends AbstractModel
     public $username;
     public $password;
 
-    public function __construct($name, $username, $role_id=1, $password)
-    {
+    public function __construct($name, $username, $role_id=1, $password) {
         $this->name = $name;
-        $this->role = Role::get($role_id);
         $this->username = $username;
+        $this->role = Role::get($role_id);
         $this->password = md5($password);
     }
 
-    public function getRole()
-    {
+    public function getRole() {
 
     }
 
-    public function save()
-    {
+    public function save() {
+
         $db = new DataBase();
 
-        try
-        {
+        try {
             $query = "INSERT INTO user (`name`, `role_id`, `username`, `password`) VALUES ('$this->name', '". $this->role->id ."', '$this->username', '$this->password');";
             $result = $db->pdo->query($query);
-
-            return $result;
-
         }
-        catch (PDOException $e)
-        {
-            echo 'Failed to register the user: ' . $e->getMessage();
+        catch (\PDOException $e) {
+            echo ('Failed to register the user: ' . $e->getMessage());
+            $result = false;
         }
-        return $db->query($query);
+
+        return $result;
     }
 
-    public function login()
-    {
+    public function login() {
         
     }
 
-    public function getTasks()
-    {
+    public function getTasks() {
 
     }
 
-    public function assignToRole($role_id)
-    {
+    public function assignToRole($role_id) {
 
     }
 
-    public static function get($id)
-    {
+    public static function get($id) {
+
         $db = new DataBase();
 
-        try
-        {
+        try {
+
             $sql = "SELECT * FROM user WHERE user.id=".$id;
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
@@ -77,22 +69,21 @@ class User extends AbstractModel
             return new User($row->name, $row->role_id, $row->username, $row->password, $row->id);
 
         }
-        catch (PDOException $e)
-        {
+        catch (\PDOException $e) {
+
             echo 'Failed to get the user: ' . $e->getMessage();
         }
 
     }
 
     //TODO: filters
-    public static function getObjects($args)
-    {
+    public static function getObjects($args) {
         $db = new DataBase();
 
-        try
-        {
+        try {
+
             $sql = "SELECT * FROM user";
-//            $sql .= DataBase::filter($args);
+//          $sql .= DataBase::filter($args);
 
             $stmt = $db->pdo->query($sql);
 
@@ -110,14 +101,13 @@ class User extends AbstractModel
             return $users;
 
         }
-        catch (PDOException $e)
-        {
+        catch (\PDOException $e) {
+
             echo 'Failed to get the task: ' . $e->getMessage();
         }
     }
 
-    public static function createTable()
-    {
+    public static function createTable() {
         // TODO: Implement createTable() method.
     }
 }
