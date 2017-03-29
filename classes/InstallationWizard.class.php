@@ -21,7 +21,7 @@ class InstallationWizard
 
     public function initDataBase()
     {
-        DataBase::initDataBase();
+        // TODO: тут вызываем createTable() всех моделей в нужной последовательности
     }
 
     public function createAdminAccount()

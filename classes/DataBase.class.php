@@ -20,11 +20,6 @@ class DataBase
 
         }
     }
-    
-    public static function initDataBase()
-    {
-        // TODO: тут вызываем createTable() всех моделей в нужной последовательности
-    }
 
     /* TODO: some smart filtering. Supporting "AND", "OR", "=", ">" and so on
     public static function filter($args)
