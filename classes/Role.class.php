@@ -11,10 +11,6 @@ class Role extends AbstractModel
     public $name;
     public $descritpion;
 
-    const ROLE_DEVELOPER = 1;
-    const ROLE_TEAMLEAD = 2;
-    const ROLE_DIRECTOR = 3;
-
     public function __construct($name, $description, $id=false)
     {
         $this->name = $name;
@@ -91,7 +87,7 @@ class Role extends AbstractModel
         }
         catch (PDOException $e)
         {
-            echo 'Failed to get the task: ' . $e->getMessage();
+            echo 'Failed to get user role: ' . $e->getMessage();
         }
     }
 
@@ -118,7 +114,7 @@ class Role extends AbstractModel
         }
         catch (PDOException $e)
         {
-            echo 'Failed to get the task: ' . $e->getMessage();
+            echo 'Failed to get user role: ' . $e->getMessage();
         }
     }
     
