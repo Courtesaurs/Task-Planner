@@ -31,12 +31,20 @@ jQuery(document).ready(function($){
 	});
 
 /*------------------------------------ */
+/*-------------Calendar--------------- */
 	
 	$('#time-task').datepicker({
 		range: true,
 		multipleDatesSeparator: ' - ',
 		position: 'top left'
 	}); 
+/*------------------------------------ */
 
+/*--------------Select2--------------- */
+
+	$('.select2').select2({ 
+	});
+
+/*------------------------------------ */ 
 });
 

@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../static/css/normalize.css">
 	<link rel="stylesheet" href="../static/css/lib/datepicker.min.css">
+	<link rel="stylesheet" href="../static/css/lib/select2.min.css">
 	<link rel="stylesheet" href="../static/css/app.css">
 </head>
 <body>
@@ -50,7 +51,7 @@
 						<div class="row"><span class="property">Email: </span><span class="value">agushka@gmail.com</span></div>
 						<div class="row"><span class="property">Роль: </span>
 							<span class="value"> 
-								<select name="select-role">
+								<select class="select2" name="select-role">
 									<option value="">Choose role</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -73,14 +74,14 @@
 						<div class="row">
 							<div class="name">test</div>
 							<div class="executor">
-								<select name="select-executor">
+								<select class="select2" name="select-executor">
 									<option value="">Choose Executor</option>
 									<option value="Poplavskiy">Poplavskiy</option>
 									<option value="Vanya Dorn">Vanya Dorn</option>								
 								</select>
 							</div>
 							<div class="status">
-								<select name="select-status">
+								<select class="select2" name="select-status">
 									<option value="Select Status">Choose Status</option>
 									<option value="Not started">Not started</option>
 									<option value="in the process">in the process</option>
@@ -93,14 +94,14 @@
 						<div class="row">
 							<div class="name">Title</div>
 							<div class="executor">
-								<select name="select-executor">
+								<select class="select2" name="select-executor">
 									<option value="">Choose Executor</option>
 									<option value="Poplavskiy">Poplavskiy</option>
 									<option value="Vanya Dorn">Vanya Dorn</option>								
 								</select>
 							</div>
 							<div class="status">
-								<select name="select-status">
+								<select class="select2" name="select-status">
 									<option value="Select Status">Choose Status</option>
 									<option value="Not started">Not started</option>
 									<option value="in the process">in the process</option>
@@ -164,6 +165,7 @@
 	</div>  
 	<script src="../static/js/lib/jquery-3.2.0.min.js"></script>
 	<script src="../static/js/lib/datepicker.min.js"></script>
+	<script src="../static/js/lib/select2.min.js"></script>
 	<script src="../static/js/ui.js"></script>
 </body>
 </html>
