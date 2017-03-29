@@ -10,6 +10,7 @@ namespace App;
 
 require_once dirname(__FILE__) . "/AbstractModel.class.php";
 require_once dirname(__FILE__). "/DataBase.class.php";
+require_once dirname(__FILE__). "/TaskStatus.class.php";
 
 
 class Task extends AbstractModel
@@ -19,25 +20,24 @@ class Task extends AbstractModel
     public $descritpion;
     public $status;
     public $deadline;
+    public $executor_id;
 
-    public function __construct($title, $description, $status=0, $deadline=false, $id=false)
+    public function __construct($title, $description, $status_id=1, $deadline=false, $id=false, $executor_id=false)
     {
         $this->title = $title;
         $this->descritpion = $description;
-        $this->status = $status;
+        $this->status = TaskStatus::get($status_id);
         $this->deadline = $deadline;
 
         if ($id) {
             $this->id = $id;
         }
+        if ($executor_id) {
+            $this->executor_id = $executor_id;
+        }
     }
 
     public function save()
-    {
-
-    }
-
-    public function getUsers()
     {
 
     }
@@ -62,8 +62,14 @@ class Task extends AbstractModel
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
-            return new Task($row->title, $row->description, $row->id);
-
+            return new Task(
+                $row->title,
+                $row->description,
+                $row->status_id,
+                $row->deadline,
+                $row->id,
+                $row->executor_id
+            );
         }
         catch (PDOException $e)
         {
@@ -83,11 +89,12 @@ class Task extends AbstractModel
             $tasks = array();
             foreach($stmt as $row) {
                 $tasks[] = new Task(
-                    $row['name'],
-                    $row['role_id'],
-                    $row['username'],
-                    $row['password'],
-                    $row['id']
+                    $row['title'],
+                    $row['descritpion'],
+                    $row['status_id'],
+                    $row['deadline'],
+                    $row['id'],
+                    $row['executor_id']
                 );
             }
 

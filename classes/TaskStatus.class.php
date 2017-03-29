@@ -27,7 +27,7 @@ class Role extends AbstractModel
         try
         {
 
-            $query = "INSERT INTO role (`name`, `description`) VALUES ('$this->name', '$this->descritpion');";
+            $query = "INSERT INTO task_status (`name`, `description`) VALUES ('$this->name', '$this->descritpion');";
             $result = $db->pdo->query($query);
 
             return $result;
@@ -40,7 +40,7 @@ class Role extends AbstractModel
         return $db->query($query);
     }
 
-    public function getUsers()
+    public function getTasks()
     {
         $db = new DataBase();
 
@@ -52,10 +52,10 @@ class Role extends AbstractModel
 
             $users = array();
             foreach($stmt as $row) {
-                $users[] = new User(
+                $users[] = new Taks(
                     $row['name'],
                     $row['description'],
-                    $row['status'],
+                    $row['status_id'],
                     $row['deadline'],
                     $row['id']
                 );
@@ -78,16 +78,16 @@ class Role extends AbstractModel
 
         try
         {
-            $sql = "SELECT * FROM role WHERE role.id=".$id;
+            $sql = "SELECT * FROM task_status WHERE task_status.id=".$id;
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
-            return new Role($row->title, $row->description, $row->id);
+            return new TaskStatus($row->title, $row->description, $row->id);
 
         }
         catch (PDOException $e)
         {
-            echo 'Failed to get user role: ' . $e->getMessage();
+            echo 'Failed to get the task status: ' . $e->getMessage();
         }
     }
 
@@ -97,12 +97,12 @@ class Role extends AbstractModel
 
         try
         {
-            $sql = "SELECT * FROM role";
+            $sql = "SELECT * FROM task_status";
             $stmt = $db->pdo->query($sql);
 
             $roles = array();
             foreach($stmt as $row) {
-                $roles[] = new Role(
+                $roles[] = new TaskStatus(
                     $row['title'],
                     $row['description'],
                     $row['id']
@@ -114,7 +114,7 @@ class Role extends AbstractModel
         }
         catch (PDOException $e)
         {
-            echo 'Failed to get user role: ' . $e->getMessage();
+            echo 'Failed to get the task status: ' . $e->getMessage();
         }
     }
     
