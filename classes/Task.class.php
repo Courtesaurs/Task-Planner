@@ -9,24 +9,24 @@
 namespace App;
 
 require_once dirname(__FILE__) . "/AbstractModel.class.php";
-require_once dirname(__FILE__). "/DataBase.class.php";
-require_once dirname(__FILE__). "/TaskStatus.class.php";
+require_once dirname(__FILE__) . "/DataBase.class.php";
+require_once dirname(__FILE__) . "/TaskStatus.class.php";
 
 
 class Task extends AbstractModel
 {
     public $id;
     public $title;
-    public $descritpion;
+    public $description;
     public $status;
     public $deadline;
     public $executor_id;
 
-    public function __construct($title, $description, $status_id=1, $deadline=false, $id=false, $executor_id=false)
+    public function __construct($title, $description, $status_id=1, $id=false, $executor_id=false, $deadline=false)
     {
         $this->title = $title;
-        $this->descritpion = $description;
-        $this->status = TaskStatus::get($status_id);
+        $this->description = $description;
+        $this->status = \App\TaskStatus::get($status_id)->description;
         $this->deadline = $deadline;
 
         if ($id) {
@@ -71,7 +71,7 @@ class Task extends AbstractModel
                 $row->executor_id
             );
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to get the task: ' . $e->getMessage();
         }
@@ -90,18 +90,19 @@ class Task extends AbstractModel
             foreach($stmt as $row) {
                 $tasks[] = new Task(
                     $row['title'],
-                    $row['descritpion'],
+                    $row['description'],
                     $row['status_id'],
-                    $row['deadline'],
+                    // TODO: no deadline record in table.
+                    // $row['deadline'],
                     $row['id'],
-                    $row['executor_id']
+                    $row['user_id']
                 );
             }
 
             return $tasks;
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to get the task: ' . $e->getMessage();
         }

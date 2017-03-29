@@ -9,7 +9,7 @@ class Role extends AbstractModel
 {
     public $id;
     public $name;
-    public $descritpion;
+    public $description;
 
     public function __construct($name, $description, $id=false)
     {
@@ -27,13 +27,13 @@ class Role extends AbstractModel
         try
         {
 
-            $query = "INSERT INTO role (`name`, `description`) VALUES ('$this->name', '$this->descritpion');";
+            $query = "INSERT INTO role (`name`, `description`) VALUES ('$this->name', '$this->description');";
             $result = $db->pdo->query($query);
 
             return $result;
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to create role: ' . $e->getMessage();
         }
@@ -65,7 +65,7 @@ class Role extends AbstractModel
 
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to get users: ' . $e->getMessage();
         }
@@ -85,7 +85,7 @@ class Role extends AbstractModel
             return new Role($row->title, $row->description, $row->id);
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to get user role: ' . $e->getMessage();
         }
@@ -112,7 +112,7 @@ class Role extends AbstractModel
             return $roles;
 
         }
-        catch (PDOException $e)
+        catch (\PDOException $e)
         {
             echo 'Failed to get user role: ' . $e->getMessage();
         }
