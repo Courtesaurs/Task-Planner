@@ -21,9 +21,9 @@
                     <div class="name">{{ task.title }}</div>
                     <div class="executor">
                         <select name="select-executor">
-                            <option value="">Choose Executor</option>
-                            <option value="Poplavskiy">Poplavskiy</option>
-                            <option value="Vanya Dorn">Vanya Dorn</option>
+                            {% for user in users %}
+                                <option value="{{ user.username }}" {{ task.executor_id == user.id ? "selected" : "" }} > {{ user.username }} </option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="status">

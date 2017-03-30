@@ -13,16 +13,15 @@ require_once dirname(__FILE__) . "/DataBase.class.php";
 require_once dirname(__FILE__) . "/TaskStatus.class.php";
 
 
-class Task extends AbstractModel
-{
+class Task extends AbstractModel {
     public $id;
     public $title;
     public $description;
     public $status;
-    public $deadline;
     public $executor_id;
+    public $deadline;
 
-    public function __construct($title, $description, $status_id=1, $id=false, $executor_id=false, $deadline=false)
+    public function __construct($title, $description, $status_id=1, $executor_id=false, $id=false, $deadline=false)
     {
         $this->title = $title;
         $this->description = $description;
@@ -37,28 +36,39 @@ class Task extends AbstractModel
         }
     }
 
-    public function save()
-    {
-
-    }
-
-    public function assignToUser($user_id)
-    {
-
-    }
-
-    public function unassign()
-    {
-
-    }
-
-    public static function get($id)
-    {
+    public function save() {
         $db = new DataBase();
 
         try
         {
-            $sql = "SELECT * FROM task WHERE task.id=".$id;
+            $query = "INSERT INTO task (`title`, `description`, `user_id`, `status_id`) VALUES ('$this->title' , '$this->description', '$this->executor_id', 1);";
+
+            #die($query);
+
+            $result = $db->pdo->query($query);
+        }
+        catch (\PDOException $e)
+        {
+            echo 'Failed to save the task: ' . $e->getMessage();
+        }
+
+        return $result;
+    }
+
+    public function assignToUser($user_id) {
+
+    }
+
+    public function unassign() {
+
+    }
+
+    public static function get($id) {
+        $db = new DataBase();
+
+        try
+        {
+            $sql = "SELECT * FROM task WHERE id=$id";
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
@@ -66,9 +76,9 @@ class Task extends AbstractModel
                 $row->title,
                 $row->description,
                 $row->status_id,
-                $row->deadline,
+                $row->executor_id,
                 $row->id,
-                $row->executor_id
+                $row->deadline
             );
         }
         catch (\PDOException $e)
@@ -77,8 +87,7 @@ class Task extends AbstractModel
         }
     }
 
-    public static function getObjects($args=array())
-    {
+    public static function getObjects($args=array()) {
         $db = new DataBase();
 
         try
@@ -92,10 +101,8 @@ class Task extends AbstractModel
                     $row['title'],
                     $row['description'],
                     $row['status_id'],
-                    // TODO: no deadline record in table.
-                    // $row['deadline'],
-                    $row['id'],
-                    $row['user_id']
+                    $row['user_id'],
+                    $row['id']
                 );
             }
 
@@ -108,8 +115,7 @@ class Task extends AbstractModel
         }
     }
 
-    public static function createTable()
-    {
+    public static function createTable() {
         // TODO: Implement createTable() method.
     }
 }

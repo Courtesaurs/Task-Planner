@@ -3,6 +3,7 @@
 require_once dirname(__FILE__). '/session.php';
 require_once dirname(__FILE__). '/vendor/autoload.php';
 require_once dirname(__FILE__). '/classes/Task.class.php';
+require_once dirname(__FILE__). '/classes/User.class.php';
 
 // TODO: If not installed then installation wizard
 
@@ -20,12 +21,16 @@ if ( !$_SESSION['login'] ) {
 	$template = $twig->load('auth.html');
 
 } else {
+	$user = \App\User::getByName($_SESSION['login']);
 
-	$tasks = \App\Task::getObjects();
+	$tasks = $user->getTasks();
+	$users = \App\User::getObjects();
+
 	$statuses = \App\TaskStatus::getObjects();
 	$context = array(
 	    'tasks' => $tasks,
-	    'statuses' => $statuses
+	    'statuses' => $statuses,
+	    'users' => $users
 	);
 
 	$template = $twig->load('tasks-list.html');
