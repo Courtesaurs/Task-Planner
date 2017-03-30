@@ -18,7 +18,7 @@
             <div class="right-part">
                 <nav id="navigation">
                     <ul>
-                        <li><a href="#">Team</a></li>
+                        <li><a href="/team">Team</a></li>
                         <li><a href="/tasks-list">All tasks</a></li>
                         <li><a href="/">My tasks</a></li>
                     </ul>
@@ -44,8 +44,9 @@
                 {% block content %}{% endblock %}
             </main>
         </div>
-
-    <div id="add-task-button">Add</div>
+    {% if current_user.role == 3 %}
+        <div id="add-task-button">Add</div>
+    {% endif %}
     <div class="popup-add-task">
         <div id="close-popup"></div>
         <div class="container">

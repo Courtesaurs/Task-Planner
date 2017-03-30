@@ -1,0 +1,34 @@
+
+
+{% extends "layout.html" %}
+
+{% block title %}Task-Manager: Tasks{% endblock %}
+
+{% block content %}
+
+<section class="tasks">
+    <h1 class="title">Team</h1>
+    <div class="list">
+        <div class="row head-row">
+            <div class="name">Username</div>
+            <div class="executor">Name</div>
+            <div class="status">Role</div>
+        </div>
+        {% for user in users %}
+        <div class="row">
+            <div class="name">{{ user.username }}</div>
+            <div class="name">{{ user.name }}</div>
+            <div class="executor">
+                <select name="select-executor">
+                    {% for role in roles %}
+                    <option value="{{ user.username }}" {{ role.id == user.role_id ? "selected" : "" }} > {{ user.username }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
+

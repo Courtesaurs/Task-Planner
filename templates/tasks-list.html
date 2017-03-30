@@ -22,7 +22,7 @@
                     <div class="executor">
                         <select name="select-executor">
                             {% for user in users %}
-                                <option value="{{ user.username }}" {{ task.executor_id == user.id ? "selected" : "" }} > {{ user.username }} </option>
+                                <option value="{{ user.username }}" {% if task.executor_id == user.id  %} "selected" {% endif %} > {{ user.username }} </option>
                             {% endfor %}
                         </select>
                     </div>
@@ -30,7 +30,7 @@
                         
                         <select name="select-status" title="{{ task.status }}">
                             {% for status in statuses %}
-                                <option value="{{ status.name }}" {{ task.status == status.description ? "selected" : "" }} > {{ status.name }} </option>
+                                <option value="{{ status.id }}" {% if task.status == status.id %} "selected" {% endif %} > {{ status.name }} </option>
                             {% endfor %}
                         </select>
                     </div>

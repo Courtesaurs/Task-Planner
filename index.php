@@ -22,22 +22,7 @@ if ( !isset($_SESSION['login']) && !$_SESSION['login'] ) {
 
 } else {
 	$user = \App\User::getByName($_SESSION['login']);
-
-//	$tasks = $user->getTasks();
-//	$users = \App\User::getObjects();
-
-
-    $user = \App\User::getByName($_SESSION['login']);
-    
-	$tasks = $user->getTasks();
-	$statuses = \App\TaskStatus::getObjects();
-	$context = array(
-	    'tasks' => $tasks,
-	    'statuses' => $statuses,
-	    'users' => $users
-	);
-
-	$template = $twig->load('tasks-list.html');
+	header('Location: /profile');
 }
 
 echo $template->render($context);
