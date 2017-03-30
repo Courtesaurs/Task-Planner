@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
 	});
 
 /*------------------------------------ */
-/*------------Popup task-------------- */
+------------Popup task-------------- 
 
 	$('#add-task-button').click(function(){
 		$('.popup-add-task').addClass('open');
