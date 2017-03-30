@@ -53,11 +53,10 @@ class Role extends AbstractModel
             $users = array();
             foreach($stmt as $row) {
                 $users[] = new User(
+                    $row['id'],
                     $row['name'],
-                    $row['description'],
-                    $row['status'],
-                    $row['deadline'],
-                    $row['id']
+                    $row['role_id'],
+                    $row['password']
                 );
             }
 
@@ -78,7 +77,7 @@ class Role extends AbstractModel
 
         try
         {
-            $sql = "SELECT * FROM role WHERE role.id=".$id;
+            $sql = "SELECT * FROM role WHERE id=$id";
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
@@ -110,8 +109,8 @@ class Role extends AbstractModel
             }
 
             return $roles;
-
         }
+        
         catch (\PDOException $e)
         {
             echo 'Failed to get user role: ' . $e->getMessage();
