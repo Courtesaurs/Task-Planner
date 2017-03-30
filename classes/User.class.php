@@ -21,7 +21,7 @@ class User extends AbstractModel
     public function __construct($id, $username, $role_id=1, $password) {
         $this->id = $id;
         $this->username = $username;
-        $this->role = Role::get($role_id);
+        $this->role = $role_id;//Role::get($role_id);
         $this->password = md5($password);
     }
 

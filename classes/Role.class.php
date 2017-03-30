@@ -90,7 +90,7 @@ class Role extends AbstractModel
         }
     }
 
-    public static function getObjects($args)
+    public static function getObjects($args=array())
     {
         $db = new DataBase();
 
