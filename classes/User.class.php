@@ -18,11 +18,12 @@ class User extends AbstractModel
     public $username;
     public $password;
 
-    public function __construct($id, $username, $role_id=1, $password) {
+    public function __construct($id, $name, $username, $password, $role_id=1) {
         $this->id = $id;
+        $this->name = $name;
         $this->username = $username;
-        $this->role = $role_id;//Role::get($role_id);
         $this->password = md5($password);
+        $this->role = $role_id;//Role::get($role_id);
     }
 
     public function getRole() {
@@ -33,10 +34,8 @@ class User extends AbstractModel
 
         $db = new DataBase();
 
-        $role_id = $this->role->id;
-
         try {
-            $query = "INSERT INTO user (`name`, `role_id`, `username`, `password`) VALUES ('$this->username', '$role_id', '$this->username', '$this->password');";
+            $query = "INSERT INTO user (`name`, `role_id`, `username`, `password`) VALUES ('$this->name', '$this->role', '$this->username', '$this->password');";
 
             $result = $db->pdo->query($query);
         }
@@ -104,8 +103,19 @@ class User extends AbstractModel
         return $this->id;
     }
 
-    public function assignToRole($role_id) {
+    public static function updateRole($user_id, $role_id) {
+        $db = new DataBase();
 
+        try {
+            $query = "UPDATE user SET role_id=$role_id WHERE id=$user_id;";
+
+            $result = $db->pdo->query($query);
+        }
+        catch (\PDOException $e) {
+            echo 'Failed to update the user: ' . $e->getMessage();
+        }
+
+        return $result;
     }
 
     public static function get($id) {
@@ -118,7 +128,7 @@ class User extends AbstractModel
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
-            return new User($row->id, $row->username, $row->role_id, $row->password);
+            return new User($row->id, $row->name, $row->username, $row->password, $row->role_id);
 
         }
         catch (\PDOException $e) {
@@ -139,7 +149,7 @@ class User extends AbstractModel
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
-            return new User($row->id, $row->username, $row->role_id, $row->password);
+            return new User($row->id, $row->name, $row->username, $row->password, $row->role_id);
 
         }
         catch (\PDOException $e) {
@@ -163,9 +173,10 @@ class User extends AbstractModel
             foreach($stmt as $row) {
                 $users[] = new User(
                     $row['id'],
+                    $row['name'],
                     $row['username'],
-                    $row['role_id'],
-                    $row['password']
+                    $row['password'],
+                    $row['role_id']
                 );
             }
 

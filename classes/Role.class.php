@@ -55,8 +55,9 @@ class Role extends AbstractModel
                 $users[] = new User(
                     $row['id'],
                     $row['name'],
-                    $row['role_id'],
-                    $row['password']
+                    $row['username'],
+                    $row['password'],
+                    $row['role_id']
                 );
             }
 

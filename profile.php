@@ -13,6 +13,7 @@ $twig = new Twig_Environment($loader, array(
 
 $users = \App\User::getObjects();
 $roles = \App\Role::getObjects();
+$statuses = \App\TaskStatus::getObjects();
 
 $current_user = null;
 foreach ($users as $user) {
@@ -25,7 +26,8 @@ $context = array(
     'users' => $users,
     'roles' => $roles,
     'current_user' => $user,
-    'tasks' => $tasks,
+    'tasks' => $tasks,    
+    'statuses' => $statuses,
 );
 
 $template = $twig->load('profile.html');

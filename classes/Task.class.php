@@ -11,6 +11,7 @@ namespace App;
 require_once dirname(__FILE__) . "/AbstractModel.class.php";
 require_once dirname(__FILE__) . "/DataBase.class.php";
 require_once dirname(__FILE__) . "/TaskStatus.class.php";
+require_once dirname(__FILE__) . "/User.class.php";
 
 
 class Task extends AbstractModel {
@@ -55,12 +56,37 @@ class Task extends AbstractModel {
         return $result;
     }
 
-    public function assignToUser($user_id) {
+    public function update() {
+        $db = new DataBase();
 
+        try {
+            $query = "UPDATE task SET status_id=$this->status, user_id=$this->executor_id WHERE id=$this->id;";
+
+            $result = $db->pdo->query($query);
+        }
+        catch (\PDOException $e) {
+            echo 'Failed to save the task: ' . $e->getMessage();
+        }
+
+        return $result;
     }
 
-    public function unassign() {
+    public function setStatus($status_id) {
+        $this->status = $status_id;
+    }
 
+    public function setExecutor($executor_id) {
+        $this->executor_id = $executor_id;
+    }
+
+    public static function updateStatus($task_id, $status_id, $executor_id = NULL) {
+        $task = \App\Task::get($task_id);
+        $task->setStatus($status_id);
+        if ($executor_id) {
+            $task->setExecutor($executor_id);
+        }
+
+        $task->update();
     }
 
     public static function get($id) {
@@ -72,13 +98,14 @@ class Task extends AbstractModel {
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
+
+
             return new Task(
                 $row->title,
                 $row->description,
                 $row->status_id,
-                $row->executor_id,
-                $row->id,
-                $row->deadline
+                $row->user_id,
+                $row->id
             );
         }
         catch (\PDOException $e)

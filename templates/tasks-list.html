@@ -8,34 +8,55 @@
     
     <section class="tasks">
         <h1 class="title">Tasks</h1>
-        <div class="button-add">Add</div>                   
+        <!-- <div class="button-add">Add</div> -->                
         <div class="list">
             <div class="row head-row">
                 <div class="name">Title</div>
                 <div class="executor">Executor</div>
                 <div class="status">Status</div>
-                <div class="dates">Dates</div>
+                <div class="update">Update</div>
             </div>
             {% for task in tasks %}
+            <form method="post" action="/task-update.php">
                 <div class="row">
-                    <div class="name">{{ task.title }}</div>
+                    <div class="name" title="{{ task.description }}"><span style="cursor:help;border-bottom: 1px solid rgba(0,0,0,.4);">{{ task.title }}</span></div>
                     <div class="executor">
-                        <select name="select-executor">
+                        {% if current_user.role == 2 %}
+                            <select name="select-executor">
+                                {% for user in users %}
+                                    <option value="{{ user.id }}" {{ task.executor_id == user.id ? "selected" : "" }} > {{ user.username }} </option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
                             {% for user in users %}
-                                <option value="{{ user.username }}" {% if task.executor_id == user.id  %} "selected" {% endif %} > {{ user.username }} </option>
+                                {{ task.executor_id == user.id ? user.username : "" }} 
                             {% endfor %}
-                        </select>
+                        {% endif %}
                     </div>
                     <div class="status">
-                        
-                        <select name="select-status" title="{{ task.status }}">
-                            {% for status in statuses %}
-                                <option value="{{ status.id }}" {% if task.status == status.id %} "selected" {% endif %} > {{ status.name }} </option>
+                        {% if current_user.id == task.executor_id or current_user.role == 2 or current_user.role == 3%}
+                            <select name="select-status">
+                                {% for status in statuses %}    
+                                    <option value="{{ status.id }}" {{ task.status == status.id ? "selected" : "" }} > {{ status.name }} </option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            {% for status in statuses %} 
+                                {{ task.status == status.id ? status.name : "" }}
                             {% endfor %}
-                        </select>
+                        {% endif %}
                     </div>
-                    <div class="dates"><span class="from">12/12/12</span> - <span class="to">05/02/13</span></div>
+                    <div class="update">
+                        <div class="row-input">
+                            {% if current_user.id == task.executor_id or current_user.role == 2 or current_user.role == 3 %}
+                                <input type="submit" value="Update">
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
+                <input type="hidden" name="task-id" value="{{ task.id }}">
+                <input type="hidden" name="page" value="/tasks-list">
+            </form>
             {% endfor %}
         </div>
     </section>

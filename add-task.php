@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+include_once dirname(__FILE__). '/session.php';
 require_once dirname(__FILE__). '/classes/Task.class.php';
 require_once dirname(__FILE__). '/classes/User.class.php';
 

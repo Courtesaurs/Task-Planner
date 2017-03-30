@@ -13,19 +13,35 @@
             <div class="name">Username</div>
             <div class="executor">Name</div>
             <div class="status">Role</div>
+            <div class="update">Update</div>
         </div>
         {% for user in users %}
-        <div class="row">
-            <div class="name">{{ user.username }}</div>
-            <div class="name">{{ user.name }}</div>
-            <div class="executor">
-                <select name="select-executor">
-                    {% for role in roles %}
-                    <option value="{{ user.username }}" {{ role.id == user.role_id ? "selected" : "" }} > {{ user.username }} </option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
+            <form method="post" action="/user-update.php">
+                <div class="row">
+                    <div class="name">{{ user.username }}</div>
+                    <div class="name">{{ user.name }}</div>
+                    <div class="executor">
+                        {% if current_user.role == 2 %}
+                        <select name="select-role">
+                            {% for role in roles %}
+                                <option value="{{ role.id }}" {{ role.id == user.role ? "selected" : "" }} > {{ role.name }} </option>
+                            {% endfor %}
+                        </select>
+                        {% else %}
+                            {% for role in roles %}
+                                {{ role.id == user.role ? role.name : "" }} 
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="update">
+                        {% if current_user.role == 2 %}
+                            <input type="submit" value="Update">
+                        {% endif %}
+                    </div>
+                </div>
+                <input type="hidden" name="user-id" value="{{ user.id }}">
+                <input type="hidden" name="page" value="/team">
+            </form>
         {% endfor %}
     </div>
 </section>
