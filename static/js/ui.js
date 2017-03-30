@@ -34,8 +34,6 @@ jQuery(document).ready(function($){
 /*-------------Calendar--------------- */
 	
 	$('#time-task').datepicker({
-		range: true,
-		multipleDatesSeparator: ' - ',
 		position: 'top left'
 	}); 
 /*------------------------------------ */
