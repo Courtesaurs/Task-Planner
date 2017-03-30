@@ -15,10 +15,17 @@ $tasks = \App\Task::getObjects();
 $statuses = \App\TaskStatus::getObjects();
 $users = \App\User::getObjects();
 
+$current_user = null;
+foreach ($users as $user) {
+    if($user->username == $_SESSION['login'])
+        $current_user = $user;
+}
+
 $context = array(
     'tasks' => $tasks,
     'statuses' => $statuses,
-    'users' => $users
+    'users' => $users,
+    'current_user' => $current_user
 );
 
 $template = $twig->load('tasks-list.html');

@@ -10,16 +10,14 @@
 			<div class="container-img"><img src="../static/images/avatar.jpg" alt="avatar"></div>
 		</div>
 		<div class="right-part">
-			<div class="name">{{ current_user.username }}</div>
+			<div class="name">{{ current_user.name }}</div>
 			<div class="username">@{{ current_user.username }}</div>
 			<!--<div class="row"><span class="property">Email: </span><span class="value">agushka@gmail.com</span></div>-->
-			<div class="row"><span class="property">Роль: </span>
+			<div class="row"><span class="property">Role: </span>
 				<span class="value">
-					<select name="select-role">
-						{% for role in roles %}
-							<option value="{{ role.title }}" {% if role.id == current_user.role_id %} "selected" {% endif %} > {{ role.name }} </option>
-						{% endfor %}
-					</select>
+					{% for role in roles %}
+						{{ role.id == current_user.role ? role.name : '' }}
+					{% endfor %}
 				</span>
 			 </div>
 			<!--<div class="row"><span class="property">Должность: </span><span class="value"> test post </span></div>-->
@@ -35,38 +33,54 @@
 					<div class="name">Title</div>
 					<div class="executor">Executor</div>
 					<div class="status">Status</div>
-					<div class="dates">Dates</div>
+					<div class="update">Update</div>
 				</div>
 				{% for task in tasks %}
-				<div class="row">
-					<div class="name">{{ task.title }}</div>
-					<div class="executor">
-						{% if current_user.role == 2 %}
-							<select name="select-executor">
-								{% for user in users %}
-								<option value="{{ user.username }}" {% if task.executor_id == user.id  %} "selected" {% endif %} > {{ user.username }} </option>
-								{% endfor %}
-							</select>
-						{% else %}
-							{% for user in users %}
-								{% if task.executor_id == user.id %}
-									{{ user.username }}
+					<form method="post" action="/task-update.php">
+						<div class="row">
+							<div class="name" title="{{ task.description }}"><span style="cursor:help;border-bottom: 1px solid rgba(0,0,0,.4);">{{ task.title }}</span></div>
+							<div class="executor">
+								{% if current_user.role == 2 %}
+									<select name="select-executor">
+										{% for user in users %}
+										<option value="{{ user.id }}" {% if task.executor_id == user.id  %} selected {% endif %} > {{ user.username }} </option>
+										{% endfor %}
+									</select>
+								{% else %}
+									{% for user in users %}
+										{% if task.executor_id == user.id %}
+											{{ user.username }}
+										{% endif %}
+									{% endfor %}
 								{% endif %}
-							{% endfor %}
-						{% endif %}
-					</div>
-					<div class="status">
+							</div>
+							<div class="status">
 
-						<select name="select-status" title="{{ task.status }}">
-							{% for status in statuses %}
-							<option value="{{ status.id }}" {% if task.status == status.id %} "selected" {% endif %} > {{ status.name }} </option>
-							{% endfor %}
-						</select>
-					</div>
-					<div class="dates"><span class="from">12/12/12</span> - <span class="to">05/02/13</span></div>
-				</div>
+								<select name="select-status" title="{{ task.status }}">
+									{% for status in statuses %}
+										<option value="{{ status.id }}" {% if task.status == status.id %} selected {% endif %} > {{ status.name }} </option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class="update">
+		                        <div class="row-input">
+		                            {% if current_user.id == task.executor_id or current_user.role == 2 %}
+		                                <input type="submit" value="Update">
+		                            {% endif %}
+		                        </div>
+		                    </div>
+		                </div>
+	                	<input type="hidden" name="task-id" value="{{ task.id }}">
+	                	<input type="hidden" name="page" value="/profile">
+	            	</form>
 				{% endfor %}
 			</div>
-</section>
+		</section>
+	{% else %}
+		<h1>Seems you have nothing to do, huh?</h1>
+		<h2>Ask your boss to give you something</h2>
+		<h4>Or not...</h4>
+
 	{% endif %}
+
 {% endblock %}			

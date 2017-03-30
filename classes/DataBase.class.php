@@ -1,7 +1,9 @@
 <?php
 
+
 namespace App;
 
+include_once "db-config.php";
 
 class DataBase
 {
@@ -10,8 +12,7 @@ class DataBase
     public function __construct()
     {
         try {
-
-            $this->pdo = new \PDO ("mysql:host=localhost;dbname=tm_1", "root", "1337");
+            $this->pdo = new \PDO ("mysql:host=localhost;dbname=task_manager", DB_USER, DB_PASS, array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         } catch (\PDOException $e) {
