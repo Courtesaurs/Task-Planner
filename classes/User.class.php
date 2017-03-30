@@ -18,23 +18,26 @@ class User extends AbstractModel
     public $username;
     public $password;
 
-    public function __construct($name, $username, $role_id=1, $password) {
-        $this->name = $name;
+    public function __construct($id, $username, $role_id=1, $password) {
+        $this->id = $id;
         $this->username = $username;
         $this->role = Role::get($role_id);
         $this->password = md5($password);
     }
 
     public function getRole() {
-
+        return $this->role;
     }
 
     public function save() {
 
         $db = new DataBase();
 
+        $role_id = $this->role->id;
+
         try {
-            $query = "INSERT INTO user (`name`, `role_id`, `username`, `password`) VALUES ('$this->name', '". $this->role->id ."', '$this->username', '$this->password');";
+            $query = "INSERT INTO user (`name`, `role_id`, `username`, `password`) VALUES ('$this->username', '$role_id', '$this->username', '$this->password');";
+
             $result = $db->pdo->query($query);
         }
         catch (\PDOException $e) {
@@ -74,8 +77,9 @@ class User extends AbstractModel
 
         try
         {
-            $sql = "SELECT * FROM task WHERE task.user_id=$this->id";
+            $sql = "SELECT * FROM task WHERE user_id=$this->id";
             $stmt = $db->pdo->query($sql);
+
 
             $tasks = array();
             foreach($stmt as $row) {
@@ -83,20 +87,21 @@ class User extends AbstractModel
                     $row['title'],
                     $row['description'],
                     $row['status_id'],
-                    // TODO: no deadline record in table.
-                    // $row['deadline'],
-                    $row['id'],
-                    $row['user_id']
+                    $row['user_id'],
+                    $row['id']
                 );
             }
 
             return $tasks;
-
         }
         catch (\PDOException $e)
         {
             echo 'Failed to get the task: ' . $e->getMessage();
         }
+    }
+
+    public function getID() {
+        return $this->id;
     }
 
     public function assignToRole($role_id) {
@@ -113,7 +118,7 @@ class User extends AbstractModel
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
-            return new User($row->name, $row->role_id, $row->username, $row->password, $row->id);
+            return new User($row->id, $row->username, $row->role_id, $row->password);
 
         }
         catch (\PDOException $e) {
@@ -129,12 +134,12 @@ class User extends AbstractModel
 
         try {
 
-            $sql = "SELECT * FROM user WHERE username=$name";
-//            die(var_dump($sql));
+            $sql = "SELECT * FROM user WHERE username='$name';";
+
             $stmt = $db->pdo->query($sql);
             $row = $stmt->fetchObject();
 
-            return new User($row->name, $row->role_id, $row->username, $row->password, $row->id);
+            return new User($row->id, $row->username, $row->role_id, $row->password);
 
         }
         catch (\PDOException $e) {
@@ -144,7 +149,7 @@ class User extends AbstractModel
     }
 
     //TODO: filters
-    public static function getObjects($args) {
+    public static function getObjects($args = array()) {
         $db = new DataBase();
 
         try {
@@ -156,12 +161,11 @@ class User extends AbstractModel
 
             $users = array();
             foreach($stmt as $row) {
-                $users[] = new Role(
-                    $row['name'],
-                    $row['role_id'],
+                $users[] = new User(
+                    $row['id'],
                     $row['username'],
-                    $row['password'],
-                    $row['id']
+                    $row['role_id'],
+                    $row['password']
                 );
             }
 

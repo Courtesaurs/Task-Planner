@@ -19,8 +19,8 @@
                 <nav id="navigation">
                     <ul>
                         <li><a href="#">Team</a></li>
-                        <li><a href="/">All tasks</a></li>
-                        <li><a href="#">My tasks</a></li>
+                        <li><a href="/tasks-list">All tasks</a></li>
+                        <li><a href="/">My tasks</a></li>
                     </ul>
                 </nav>
                 <ul class="personal-links">
@@ -50,10 +50,10 @@
         <div id="close-popup"></div>
         <div class="container">
             <h2>Add task</h2>
-            <form action="">
+            <form method="post" action="/add-task.php">
                 <div class="row-input">
 						 <span class="input">
-							<input class="input__field" type="text" id="name-task" />
+							<input class="input__field" type="text" id="name-task" name="title" />
 							<label class="input__label" for="name-task">
                                 <span class="input__label-content">Name</span>
                             </label>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="row-input">
 						<span class="input">
-							<textarea class="input__field" id="description-task">
+							<textarea class="input__field" id="description-task" name="description">
 							</textarea>
 							<label class="input__label" for="description-task">
                                 <span class="input__label-content">Description</span>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="row-input">
 						<span class="input date">
-							<input class="input__field datepicker-here" id="time-task">
+							<input class="input__field datepicker-here" id="time-task" name="time">
 							<label class="input__label" for="time-task">
                                 <span class="input__label-content">Date</span>
                             </label>

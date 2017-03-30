@@ -21,6 +21,11 @@ if ( !isset($_SESSION['login']) && !$_SESSION['login'] ) {
 	$template = $twig->load('auth.html');
 
 } else {
+	$user = \App\User::getByName($_SESSION['login']);
+
+//	$tasks = $user->getTasks();
+//	$users = \App\User::getObjects();
+
 
     $user = \App\User::getByName($_SESSION['login']);
     
@@ -28,7 +33,8 @@ if ( !isset($_SESSION['login']) && !$_SESSION['login'] ) {
 	$statuses = \App\TaskStatus::getObjects();
 	$context = array(
 	    'tasks' => $tasks,
-	    'statuses' => $statuses
+	    'statuses' => $statuses,
+	    'users' => $users
 	);
 
 	$template = $twig->load('tasks-list.html');
