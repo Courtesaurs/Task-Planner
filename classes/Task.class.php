@@ -18,21 +18,21 @@ class Task extends AbstractModel {
     public $title;
     public $description;
     public $status;
-    public $executor_id;
+    public $executor;
     public $deadline;
 
     public function __construct($title, $description, $status_id=1, $executor_id=false, $id=false, $deadline=false)
     {
         $this->title = $title;
         $this->description = $description;
-        $this->status = \App\TaskStatus::get($status_id)->description;
+        $this->status = $status_id; //\App\TaskStatus::get($status_id);
         $this->deadline = $deadline;
 
         if ($id) {
             $this->id = $id;
         }
         if ($executor_id) {
-            $this->executor_id = $executor_id;
+            $this->executor_id = $executor_id; //User::get($executor_id);
         }
     }
 

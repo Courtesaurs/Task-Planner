@@ -15,25 +15,14 @@ $twig = new Twig_Environment($loader, array(
     // 'cache' => dirname(__FILE__). '/templates/cache',
 ));
 
-if ( !$_SESSION['login'] ) {
+if ( !isset($_SESSION['login']) && !$_SESSION['login'] ) {
 
 	$context = array();
 	$template = $twig->load('auth.html');
 
 } else {
 	$user = \App\User::getByName($_SESSION['login']);
-
-	$tasks = $user->getTasks();
-	$users = \App\User::getObjects();
-
-	$statuses = \App\TaskStatus::getObjects();
-	$context = array(
-	    'tasks' => $tasks,
-	    'statuses' => $statuses,
-	    'users' => $users
-	);
-
-	$template = $twig->load('tasks-list.html');
+	header('Location: /profile');
 }
 
 echo $template->render($context);

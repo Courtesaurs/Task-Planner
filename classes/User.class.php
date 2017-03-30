@@ -8,6 +8,7 @@ namespace App;
 require_once dirname(__FILE__) . "/AbstractModel.class.php";
 require_once dirname(__FILE__) . "/DataBase.class.php";
 require_once dirname(__FILE__) . "/Role.class.php";
+require_once dirname(__FILE__) . "/Task.class.php";
 
 class User extends AbstractModel
 {
@@ -20,7 +21,7 @@ class User extends AbstractModel
     public function __construct($id, $username, $role_id=1, $password) {
         $this->id = $id;
         $this->username = $username;
-        $this->role = Role::get($role_id);
+        $this->role = $role_id;//Role::get($role_id);
         $this->password = md5($password);
     }
 
@@ -92,7 +93,6 @@ class User extends AbstractModel
             }
 
             return $tasks;
-
         }
         catch (\PDOException $e)
         {
@@ -125,7 +125,27 @@ class User extends AbstractModel
 
             echo 'Failed to get the user: ' . $e->getMessage();
         }
+    }
 
+    public static function getByName($name)
+    {
+
+        $db = new DataBase();
+
+        try {
+
+            $sql = "SELECT * FROM user WHERE username='$name';";
+
+            $stmt = $db->pdo->query($sql);
+            $row = $stmt->fetchObject();
+
+            return new User($row->id, $row->username, $row->role_id, $row->password);
+
+        }
+        catch (\PDOException $e) {
+
+            echo 'Failed to get the user: ' . $e->getMessage();
+        }
     }
 
     //TODO: filters
@@ -155,27 +175,6 @@ class User extends AbstractModel
         catch (\PDOException $e) {
 
             echo 'Failed to get the task: ' . $e->getMessage();
-        }
-    }
-
-    public static function getByName($name)
-    {
-
-        $db = new DataBase();
-
-        try {
-
-            $sql = "SELECT * FROM user WHERE username='$name';";
-
-            $stmt = $db->pdo->query($sql);
-            $row = $stmt->fetchObject();
-
-            return new User($row->id, $row->username, $row->role_id, $row->password);
-
-        }
-        catch (\PDOException $e) {
-
-            echo 'Failed to get the user: ' . $e->getMessage();
         }
     }
 
