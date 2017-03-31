@@ -17,15 +17,17 @@ $statuses = \App\TaskStatus::getObjects();
 
 $current_user = null;
 foreach ($users as $user) {
-    if($user->username == $_SESSION['login'])
-        $current_user = $user;
+    if($user->username == $_SESSION['login']) {
+        $current_user = $user;      
+    }
 }
-$tasks = $user->getTasks();
+
+$tasks = $current_user->getTasks();
 
 $context = array(
     'users' => $users,
     'roles' => $roles,
-    'current_user' => $user,
+    'current_user' => $current_user,
     'tasks' => $tasks,    
     'statuses' => $statuses,
 );

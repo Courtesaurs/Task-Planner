@@ -78,8 +78,7 @@ class User extends AbstractModel
         {
             $sql = "SELECT * FROM task WHERE user_id=$this->id";
             $stmt = $db->pdo->query($sql);
-
-
+            
             $tasks = array();
             foreach($stmt as $row) {
                 $tasks[] = new Task(

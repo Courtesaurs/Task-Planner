@@ -15,7 +15,7 @@ $twig = new Twig_Environment($loader, array(
     // 'cache' => dirname(__FILE__). '/templates/cache',
 ));
 
-if ( !isset($_SESSION['login']) && !$_SESSION['login'] ) {
+if ( !isset($_SESSION['login']) ) {
 
 	$context = array();
 	$template = $twig->load('auth.html');
