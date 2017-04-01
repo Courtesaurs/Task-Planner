@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/lib/datepicker.min.css">
     <link rel="stylesheet" href="../static/css/app.css">
+    <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -18,13 +19,13 @@
             <div class="right-part">
                 <nav id="navigation">
                     <ul>
-                        <li><a href="/team">Team</a></li>
-                        <li><a href="/tasks-list">All tasks</a></li>
-                        <li><a href="/">My tasks</a></li>
+                        <li><a {{ args.team_page }} href="/team">Team</a></li>
+                        <li><a {{ args.tasks_page }} href="/tasks-list">All tasks</a></li>
+                        <li><a {{ args.user_page }} href="/profile">My tasks</a></li>
                     </ul>
                 </nav>
                 <ul class="personal-links">
-                    <li class="list-item"><a href="/profile">Profile</a></li>
+                    <li class="list-item"><a href="/profile">@{{ current_user.username}}</a></li>
                     <li class="list-item"><a href="/logout">Logout</a></li>
                 </ul>
             </div>

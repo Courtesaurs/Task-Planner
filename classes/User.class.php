@@ -71,14 +71,19 @@ class User extends AbstractModel
         return $login;
     }
 
-    public function getTasks() {
+    public function getTasks( $args = array() ) {
         $db = new DataBase();
+
+        if ($args["page"] > 1) {
+            $limit = "LIMIT " . ($args["page"] - 1) * $args["tasksPerPage"] . ", " . $args["tasksPerPage"];
+        } else {
+            $limit = "LIMIT " . $args["tasksPerPage"];
+        }
 
         try
         {
-            $sql = "SELECT * FROM task WHERE user_id=$this->id";
+            $sql = "SELECT * FROM task WHERE user_id=$this->id $limit";
             $stmt = $db->pdo->query($sql);
-
 
             $tasks = array();
             foreach($stmt as $row) {
@@ -163,10 +168,15 @@ class User extends AbstractModel
         $db = new DataBase();
 
         try {
-
-            $sql = "SELECT * FROM user";
-//          $sql .= DataBase::filter($args);
-
+            if(count($args)) {
+                if ($args["page"] > 1) {
+                    $limit = "LIMIT " . ($args["page"] - 1) * $args["usersPerPage"] . ", " . $args["usersPerPage"];
+                } else {
+                    $limit = "LIMIT " . $args["usersPerPage"];
+                }
+            }
+            $sql = "SELECT * FROM user $limit";
+    
             $stmt = $db->pdo->query($sql);
 
             $users = array();
@@ -187,6 +197,40 @@ class User extends AbstractModel
 
             echo 'Failed to get the task: ' . $e->getMessage();
         }
+    }
+
+    public static function getUserAmount() {
+        $db = new DataBase();
+
+        try
+        {
+            $sql = "SELECT COUNT(id) FROM user";
+            $stmt = $db->pdo->query($sql);
+
+            foreach ($stmt as $row) {
+                return $row[0];
+            }
+
+            return false;
+        }
+        catch (\PDOException $e)
+        {
+            echo 'Failed to get the amount of users: ' . $e->getMessage();
+        }
+    }
+
+    public static function getPageAmount($usersPerPage) {
+        $users = self::getUserAmount();
+        $increment = $users != $usersPerPage ? 1 : 0;
+        return floor($users / $usersPerPage) + $increment;
+    }
+
+    public static function isFirstPage($page) {
+        return $page == 1;
+    }
+
+    public static function isLastPage($page, $usersPerPage) {
+        return $page * $usersPerPage >= self::getUserAmount();
     }
 
     public static function createTable() {

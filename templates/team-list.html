@@ -6,21 +6,21 @@
 
 {% block content %}
 
-<section class="tasks">
+<section class="team-list">
     <h1 class="title">Team</h1>
     <div class="list">
         <div class="row head-row">
-            <div class="name">Username</div>
-            <div class="executor">Name</div>
-            <div class="status">Role</div>
-            <div class="update">Update</div>
+            <div {{ current_user.role == 2 ? "class='username'" : "class='username one-third'"}}>Username</div>
+            <div {{ current_user.role == 2 ? "class='name'" : "class='name one-third'"}}>Name</div>
+            <div {{ current_user.role == 2 ? "class='role'" : "class='role one-third'"}}>Role</div>
+            {% if current_user.role == 2 %}<div class="update">Update</div>{% endif %}
         </div>
         {% for user in users %}
             <form method="post" action="/user-update.php">
                 <div class="row">
-                    <div class="name">{{ user.username }}</div>
-                    <div class="name">{{ user.name }}</div>
-                    <div class="executor">
+                    <div {{ current_user.role == 2 ? "class='username'" : "class='username one-third'"}} ><span>{{ user.username }}</span></div>
+                    <div {{ current_user.role == 2 ? "class='name'" : "class='name one-third'"}}><span>{{ user.name }}</span></div>
+                    <div {{ current_user.role == 2 ? "class='role'" : "class='role one-third'"}}>
                         {% if current_user.role == 2 %}
                         <select name="select-role">
                             {% for role in roles %}
@@ -33,16 +33,27 @@
                             {% endfor %}
                         {% endif %}
                     </div>
-                    <div class="update">
-                        {% if current_user.role == 2 %}
-                            <input type="submit" value="Update">
-                        {% endif %}
-                    </div>
+                    {% if current_user.role == 2 %}
+                        <div class="update">
+                            <div class="row-input">
+                                <button type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
                 <input type="hidden" name="user-id" value="{{ user.id }}">
                 <input type="hidden" name="page" value="/team">
             </form>
         {% endfor %}
+        <div class="pagination">
+            {% if not args.isFirst == 1 %}
+                <a class="pagination--left" href="?page={{ args.page - 1 }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+            {% endif %}
+            <span class="page-amount">Page {{ args.page }} of {{ args.pageAmount }}</span>
+            {% if not args.isLast == 1 %}
+            <a class="pagination--right" href="?page={{ args.page + 1 }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            {% endif %}
+        </div>
     </div>
 </section>
 

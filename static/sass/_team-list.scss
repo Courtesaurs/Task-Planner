@@ -1,4 +1,4 @@
-.tasks {
+.team-list {
 	width: 100%;
 	.title {
 		margin: 15px 0;
@@ -14,22 +14,29 @@
 			padding: 15px 10px;
 			font: 18px $lightTextFont;
 			@extend .flex;
-			.name {
+			.username {
 				width: 30%;
 				span {
-				    cursor: help;
-				    border-bottom: 1px solid rgba(0,0,0,.4);
 				    height: 100%;
 				    position: relative;
 				    top: 5px;
 				}
 			}
-			.executor, .status {
+			.name {
+				span {
+					position: relative;
+					top: 5px;
+				}
+			}
+			.name, .role {
 				width: 30%;
 				select{
 					height: 34px;
 					width: 90%;
 				} 
+			}
+			.one-third{
+				width:33.333%;
 			}
 			.update {
 				width: 10%;

@@ -24,10 +24,9 @@
 		</div>
 	</section>
 
-	<!-- TODO: подключать вместо того чтобы копипастить. Разобраться с доками Twig -->
 	{% if tasks %}
 		<section class="tasks">
-			<h1 class="title">Tasks</h1>
+			<h1 class="title">My Tasks</h1>
 			<div class="list">
 				<div class="row head-row">
 					<div class="name">Title</div>
@@ -65,15 +64,24 @@
 							<div class="update">
 		                        <div class="row-input">
 		                            {% if current_user.id == task.executor_id or current_user.role == 2 %}
-		                                <input type="submit" value="Update">
+		                                <button type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 		                            {% endif %}
 		                        </div>
 		                    </div>
 		                </div>
 	                	<input type="hidden" name="task-id" value="{{ task.id }}">
-	                	<input type="hidden" name="page" value="/profile">
+	                	<input type="hidden" name="page" value="/profile?page={{ args.page }}">
 	            	</form>
 				{% endfor %}
+				<div class="pagination">
+		            {% if not args.isFirst == 1 %}
+		                <a class="pagination--left" href="?page={{ args.page - 1 }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+		            {% endif %}
+		            <span class="page-amount">Page {{ args.page }} of {{ args.pageAmount }}</span>
+		            {% if not args.isLast == 1 %}
+		            <a class="pagination--right" href="?page={{ args.page + 1 }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+		            {% endif %}
+		        </div>
 			</div>
 		</section>
 	{% else %}
