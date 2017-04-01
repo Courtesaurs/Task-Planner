@@ -502,6 +502,9 @@ body.open-menu .wrapper #header .confines-width .right-part {
               height: 100%;
               position: relative;
               top: 5px; }
+          .wrapper #header .confines-width .content-page .team-list .list .row .name span, #header .wrapper .confines-width .content-page .team-list .list .row .name span, .wrapper .confines-width .content-page .team-list .list .row .name span {
+            position: relative;
+            top: 5px; }
           .wrapper #header .confines-width .content-page .team-list .list .row .name, #header .wrapper .confines-width .content-page .team-list .list .row .name, .wrapper .confines-width .content-page .team-list .list .row .name, .wrapper #header .confines-width .content-page .team-list .list .row .role, #header .wrapper .confines-width .content-page .team-list .list .row .role, .wrapper .confines-width .content-page .team-list .list .row .role {
             width: 30%; }
             .wrapper #header .confines-width .content-page .team-list .list .row .name select, #header .wrapper .confines-width .content-page .team-list .list .row .name select, .wrapper .confines-width .content-page .team-list .list .row .name select, .wrapper #header .confines-width .content-page .team-list .list .row .role select, #header .wrapper .confines-width .content-page .team-list .list .row .role select, .wrapper .confines-width .content-page .team-list .list .row .role select {

@@ -18,8 +18,8 @@
         {% for user in users %}
             <form method="post" action="/user-update.php">
                 <div class="row">
-                    <div {{ current_user.role == 2 ? "class='username'" : "class='username one-third'"}} >{{ user.username }}</div>
-                    <div {{ current_user.role == 2 ? "class='name'" : "class='name one-third'"}}>{{ user.name }}</div>
+                    <div {{ current_user.role == 2 ? "class='username'" : "class='username one-third'"}} ><span>{{ user.username }}</span></div>
+                    <div {{ current_user.role == 2 ? "class='name'" : "class='name one-third'"}}><span>{{ user.name }}</span></div>
                     <div {{ current_user.role == 2 ? "class='role'" : "class='role one-third'"}}>
                         {% if current_user.role == 2 %}
                         <select name="select-role">
