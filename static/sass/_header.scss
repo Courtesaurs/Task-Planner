@@ -37,6 +37,11 @@
 						@include linkAnimation(white);
 						border-bottom: 1px solid transparent;
 					}
+
+					a.page-active {
+						padding-bottom: 4px;
+    					border-color: white;
+					}
 				}
 			}
 			.personal-links {

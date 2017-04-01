@@ -11,21 +11,30 @@ $twig = new Twig_Environment($loader, array(
     // 'cache' => dirname(__FILE__). '/templates/cache',
 ));
 
-$tasks = \App\Task::getObjects();
-$statuses = \App\TaskStatus::getObjects();
-$users = \App\User::getObjects();
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$tasksPerPage = 5;
 
-$current_user = null;
-foreach ($users as $user) {
-    if($user->username == $_SESSION['login'])
-        $current_user = $user;
-}
+$current_user = \App\User::getByName($_SESSION['login']);
+
+$args = array(
+	'page' => $page,
+	'tasksPerPage' => $tasksPerPage,
+	'isFirst' => \App\Task::isFirstPage($page),
+	'isLast' => \App\Task::isLastPage($page, $tasksPerPage, $current_user->id),
+	'pageAmount' => \App\Task::getPageAmount($tasksPerPage, $current_user->id),
+	'tasks_page' => "class=page-active"
+);
+
+$users = \App\User::getObjects();
+$tasks = \App\Task::getObjects($args);
+$statuses = \App\TaskStatus::getObjects();
 
 $context = array(
     'tasks' => $tasks,
     'statuses' => $statuses,
     'users' => $users,
-    'current_user' => $current_user
+    'current_user' => $current_user,
+    'args' => $args,
 );
 
 $template = $twig->load('tasks-list.html');

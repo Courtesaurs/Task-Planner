@@ -114,12 +114,18 @@ class Task extends AbstractModel {
         }
     }
 
-    public static function getObjects($args=array()) {
+    public static function getObjects( $args = array() ) {
         $db = new DataBase();
-
+        if(count($args)) {
+            if ($args["page"] > 1) {
+                $limit = "LIMIT " . ($args["page"] - 1) * $args["tasksPerPage"] . ", " . $args["tasksPerPage"];
+            } else {
+                $limit = "LIMIT " . $args["tasksPerPage"];
+            }
+        }
         try
         {
-            $sql = "SELECT * FROM task";
+            $sql = "SELECT * FROM task $limit";
             $stmt = $db->pdo->query($sql);
 
             $tasks = array();
@@ -138,8 +144,46 @@ class Task extends AbstractModel {
         }
         catch (\PDOException $e)
         {
-            echo 'Failed to get the task: ' . $e->getMessage();
+            echo 'Failed to get the tasks: ' . $e->getMessage();
         }
+    }
+
+    public static function getTaskAmount($user_id = NULL) {
+        $db = new DataBase();
+
+        if ($user_id) {
+            $where = "WHERE `user_id`=$user_id";
+        }
+
+        try
+        {
+            $sql = "SELECT COUNT(id) FROM task $where";
+            $stmt = $db->pdo->query($sql);
+
+            foreach ($stmt as $row) {
+                return $row[0];
+            }
+
+            return false;
+        }
+        catch (\PDOException $e)
+        {
+            echo 'Failed to get the amount of tasks: ' . $e->getMessage();
+        }
+    }
+
+    public static function getPageAmount($tasksPerPage, $id) {
+        $tasks = self::getTaskAmount($id);
+        $increment = $tasks != $tasksPerPage ? 1 : 0;
+        return floor($tasks / $tasksPerPage) + $increment;
+    }
+
+    public static function isFirstPage($page) {
+        return $page == 1;
+    }
+
+    public static function isLastPage($page, $tasksPerPage, $id) {
+        return $page * $tasksPerPage >= self::getTaskAmount($id);
     }
 
     public static function createTable() {

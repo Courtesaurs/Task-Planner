@@ -15,14 +15,27 @@ $users = \App\User::getObjects();
 $roles = \App\Role::getObjects();
 $statuses = \App\TaskStatus::getObjects();
 
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$tasksPerPage = 5;
+
 $current_user = null;
+
 foreach ($users as $user) {
     if($user->username == $_SESSION['login']) {
         $current_user = $user;      
     }
 }
 
-$tasks = $current_user->getTasks();
+$args = array(
+	'page' => $page,
+	'tasksPerPage' => $tasksPerPage,
+	'isFirst' => \App\Task::isFirstPage($page),
+	'isLast' => \App\Task::isLastPage($page, $tasksPerPage, $current_user->id),
+	'pageAmount' => \App\Task::getPageAmount($tasksPerPage, $current_user->id),
+	'user_page' => "class=page-active"
+);
+
+$tasks = $current_user->getTasks($args);
 
 $context = array(
     'users' => $users,
@@ -30,6 +43,7 @@ $context = array(
     'current_user' => $current_user,
     'tasks' => $tasks,    
     'statuses' => $statuses,
+    'args' => $args
 );
 
 $template = $twig->load('profile.html');

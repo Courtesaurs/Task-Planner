@@ -19,7 +19,7 @@
             {% for task in tasks %}
             <form method="post" action="/task-update.php">
                 <div class="row">
-                    <div class="name" title="{{ task.description }}"><span style="cursor:help;border-bottom: 1px solid rgba(0,0,0,.4);">{{ task.title }}</span></div>
+                    <div class="name" title="{{ task.description }}"><span>{{ task.title }}</span></div>
                     <div class="executor">
                         {% if current_user.role == 2 %}
                             <select name="select-executor">
@@ -49,15 +49,24 @@
                     <div class="update">
                         <div class="row-input">
                             {% if current_user.id == task.executor_id or current_user.role == 2 or current_user.role == 3 %}
-                                <input type="submit" value="Update">
+                                <button type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                             {% endif %}
                         </div>
                     </div>
                 </div>
                 <input type="hidden" name="task-id" value="{{ task.id }}">
-                <input type="hidden" name="page" value="/tasks-list">
+                <input type="hidden" name="page" value="/tasks-list?page={{ args.page }}">
             </form>
             {% endfor %}
+        </div>
+        <div class="pagination">
+            {% if not args.isFirst == 1 %}
+                <a class="pagination--left" href="?page={{ args.page - 1 }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+            {% endif %}
+            <span class="page-amount">Page {{ args.page }} of {{ args.pageAmount }}</span>
+            {% if not args.isLast == 1 %}
+            <a class="pagination--right" href="?page={{ args.page + 1 }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            {% endif %}
         </div>
     </section>
 
