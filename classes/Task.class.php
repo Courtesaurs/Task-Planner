@@ -172,7 +172,7 @@ class Task extends AbstractModel {
         }
     }
 
-    public static function getPageAmount($tasksPerPage, $id) {
+    public static function getPageAmount($tasksPerPage, $id = NULL) {
         $tasks = self::getTaskAmount($id);
         $increment = $tasks != $tasksPerPage ? 1 : 0;
         return floor($tasks / $tasksPerPage) + $increment;
@@ -182,7 +182,7 @@ class Task extends AbstractModel {
         return $page == 1;
     }
 
-    public static function isLastPage($page, $tasksPerPage, $id) {
+    public static function isLastPage($page, $tasksPerPage, $id = NULL) {
         return $page * $tasksPerPage >= self::getTaskAmount($id);
     }
 

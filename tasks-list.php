@@ -20,8 +20,8 @@ $args = array(
 	'page' => $page,
 	'tasksPerPage' => $tasksPerPage,
 	'isFirst' => \App\Task::isFirstPage($page),
-	'isLast' => \App\Task::isLastPage($page, $tasksPerPage, $current_user->id),
-	'pageAmount' => \App\Task::getPageAmount($tasksPerPage, $current_user->id),
+	'isLast' => \App\Task::isLastPage($page, $tasksPerPage),
+	'pageAmount' => \App\Task::getPageAmount($tasksPerPage),
 	'tasks_page' => "class=page-active"
 );
 

@@ -497,8 +497,6 @@ body.open-menu .wrapper #header .confines-width .right-part {
           .wrapper #header .confines-width .content-page .team-list .list .row .username, #header .wrapper .confines-width .content-page .team-list .list .row .username, .wrapper .confines-width .content-page .team-list .list .row .username {
             width: 30%; }
             .wrapper #header .confines-width .content-page .team-list .list .row .username span, #header .wrapper .confines-width .content-page .team-list .list .row .username span, .wrapper .confines-width .content-page .team-list .list .row .username span {
-              cursor: help;
-              border-bottom: 1px solid rgba(0, 0, 0, 0.4);
               height: 100%;
               position: relative;
               top: 5px; }
